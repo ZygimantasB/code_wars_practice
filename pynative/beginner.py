@@ -76,4 +76,116 @@ def count_emma(sentence, name):
 
 str_x = "Emma is good developer. Emma is a writer"
 
-print(count_emma(sentence=str_x, name='Emma'))
+
+# print(count_emma(sentence=str_x, name='Emma'))
+
+# Exercise 8: Print the following pattern
+
+
+def print_following_pattern(numbers):
+    for number1 in range(1, numbers + 1):
+        print(' '.join(str(number1) for _ in range(number1)))
+
+
+# print_following_pattern(5)
+
+# Exercise 9: Check Palindrome Number
+
+
+def is_palindrome_number(number):
+    is_palindrome1 = 'Yes. given number is palindrome number'
+    not_palindrome = "No. given number is not palindrome number"
+    return is_palindrome1 if str(number) == str(number)[::-1] else not_palindrome
+
+
+# print(is_palindrome_number(454))
+# print(is_palindrome_number(123))
+# print(is_palindrome_number(898))
+# print(is_palindrome_number(8989854))
+
+# Exercise 10: Create a new list from two list using the following condition
+
+
+def create_odd_even_list(num_list1, num_list2):
+    # odd_even_list = []
+    # odd_even_list.extend([odd_number for odd_number in num_list1 if odd_number % 2 != 0])
+    # odd_even_list.extend([even_number for even_number in num_list2 if even_number % 2 == 0])
+    # return odd_even_list
+    return ([odd_number for odd_number in num_list1 if odd_number % 2 != 0] \
+            + [even_number for even_number in num_list2 if even_number % 2 == 0])
+
+
+list1 = [10, 20, 25, 30, 35]
+list2 = [40, 45, 60, 75, 90]
+
+# print(create_odd_even_list(list1, list2))
+
+# Exercise 11: Write a Program to extract each digit from an integer in the reverse order.
+
+
+def reverse_digit(numbers):
+    return ' '.join(str(numbers)[::-1])
+
+
+# print(reverse_digit(7536))
+
+def calculate_taxes(income):
+    tax = 0
+    if income > 10_000:
+        income -= 10_000
+        if income > 10_000:
+            tax += 10_000 * 0.1
+            income -= 10_000
+        else:
+            tax += income * 0.1
+            income = 0
+    if income > 0:
+        tax += income * 0.2
+    return tax
+
+
+# print(calculate_taxes(45_000))
+
+
+# Exercise 13: Print multiplication table from 1 to 10
+
+def create_multiplication_table(numbers):
+    for number1 in range(1, numbers + 1):
+        for number2 in range(1, numbers + 1):
+            print(number1 * number2, end=' ')
+        print()
+
+
+# create_multiplication_table(10)
+
+# Exercise 14: Print a downward Half-Pyramid Pattern of Star (asterisk)
+
+def print_asterix_backwards():
+    for j in range(6, 0, -1):
+        print(" *" * j)
+
+
+# print_asterix_backwards()
+
+# Exercise 15: Write a function called exponent(base, exp) that returns an int value of base raises to the power of exp.
+
+from math import pow
+
+# def exponent():
+#     repeat = 'yes'
+#     while repeat == 'yes':
+#         base = int(input('Base number: '))
+#         exponent = int(input('Exponent number: '))
+#         print(pow(base, exponent))
+#
+#         repeat = input('Do you want to repeat: ')
+#         if repeat == 'no':
+#             break
+
+
+def exponent(base, exp):
+    return f'{base} raises top the power of {exp} is: {int(pow(base, exp))}'
+
+
+print(exponent(2, 5))
+print(exponent(5, 4))

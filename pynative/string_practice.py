@@ -1,4 +1,6 @@
 # Exercise 1A: Create a string made of the first, middle and last character
+import string
+
 
 def create_string(word):
     return word[0] + word[(len(word) // 2)] + word[-1]
@@ -134,7 +136,7 @@ def count_occurrence(words, searching_word):
     return words.lower().count(searching_word.lower())
 
 
-print(count_occurrence("Welcome to USA. usa awesome, isn't it?", 'USA'))
+# print(count_occurrence("Welcome to USA. usa awesome, isn't it?", 'USA'))
 
 
 # Exercise 9: Calculate the sum and average of the digits present in a string
@@ -147,4 +149,92 @@ def count_digits(words):
     return sum_digits, average_digits
 
 
-print(count_digits("PYnative29@#8496"))
+# print(count_digits("PYnative29@#8496"))
+
+# Exercise 10: Write a program to count occurrences of all characters within a string
+
+def count_char_occurrences(word):
+    return {char: word.count(char) for char in set(word)}
+
+
+# print(count_char_occurrences('Apple'))
+
+# Exercise 11: Reverse a given string
+
+def reverse_string(word: str) -> str:
+    """
+    Reverse given string
+    :param word:
+    :return:
+    """
+    # return word[::-1]
+    # return ''.join(reversed(word))
+
+
+# print(reverse_string(word="PYnative"))
+
+
+# Exercise 12: Find the last position of a given substring
+
+
+def find_string_location(sentence: str, searching_word: str) -> int:
+    return sentence.rindex(searching_word)
+
+
+str12 = "Emma is a data scientist who knows Python. Emma works at google."
+
+
+# print(find_string_location(sentence=str12, searching_word='Emma', ))
+
+# Exercise 13: Split a string on hyphens
+
+
+def split_string(words):
+    # split_word = words.split('-')
+    # return split_word
+    # return [word for word in words.split('-')]
+    return words.split('-')
+
+
+# print(split_string('Emma-is-a-data-scientist'))
+
+# Exercise 14: Remove empty strings from a list of strings
+
+def remove_empty_string(example_list):
+    return [word for word in example_list if word or word == 0]
+
+
+# print(remove_empty_string(["Emma", "Jon", "", "Kelly", None, "Eric", ""]))
+
+# Exercise 15: Remove special symbols / punctuation from a string
+
+from string import punctuation
+
+def remove_special_symbols(sentence):
+    # result = ''
+    # for word in sentence:
+    #     if word not in punctuation:
+    #         result += word
+    # return result
+    return ''.join([word for word in sentence if word not in punctuation])
+
+
+# print(remove_special_symbols("/*Jon is @developer & musician"))
+
+
+# Exercise 16: Removal all characters from a string except integers
+
+def remove_strings(sentence):
+    return "".join([value for value in sentence if value.isdigit()])
+
+
+# print(remove_strings('I am 25 years and 10 months old'))
+
+
+# Exercise 18: Replace each special symbol with # in the following string
+
+def change_symbol(sentence):
+    return ' '.join([value if value not in string.punctuation else '#' for value in sentence])
+
+
+print(change_symbol('/*Jon is @developer & musician!!'))

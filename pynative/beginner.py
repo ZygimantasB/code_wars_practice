@@ -1,15 +1,31 @@
 # https://pynative.com/python-basic-exercise-for-beginners/
 # Exercise 1: Calculate the multiplication and sum of two numbers
+# def number_multiplayer(number1, number2):
+#     product = number1 * number2
+#     if product <= 1000:
+#         return product
+#     else:
+#         return number1 + number2
+
 def number_multiplayer(number1, number2):
-    product = number1 * number2
-    if product <= 1000:
-        return product
-    else:
-        return number1 + number2
+    try:
+        product = number1 * number2
+        if product <= 1000:
+            result = product
+        else:
+            result = number1 + number2
+        return result
+    except TypeError:
+        return 'Invalid input: Both arguments must be integers'
+    except Exception as error:
+        return f"An error occurred: {error}"
+    finally:
+        print('Execution completed i number_multiplayer')
 
 
-# print(number_multiplayer(20, 30))
-# print(number_multiplayer(40, 30))
+print(number_multiplayer(20, 30))
+print(number_multiplayer(40, 30))
+print(number_multiplayer('a', 30))
 
 # Exercise 2: Print the sum of the current number and the previous number
 
@@ -186,6 +202,6 @@ from math import pow
 def exponent(base, exp):
     return f'{base} raises top the power of {exp} is: {int(pow(base, exp))}'
 
-
-print(exponent(2, 5))
-print(exponent(5, 4))
+#
+# print(exponent(2, 5))
+# print(exponent(5, 4))

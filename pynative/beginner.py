@@ -23,11 +23,12 @@ def number_multiplayer(number1, number2):
         print('Execution completed i number_multiplayer')
 
 
-print(number_multiplayer(20, 30))
-print(number_multiplayer(40, 30))
-print(number_multiplayer('a', 30))
+# print(number_multiplayer(20, 30))
+# print(number_multiplayer(40, 30))
+# print(number_multiplayer('a', 30))
 
 # Exercise 2: Print the sum of the current number and the previous number
+
 
 def print_previous_number(numbers):
     previous_number = 0
@@ -37,12 +38,28 @@ def print_previous_number(numbers):
         previous_number = current_number
 
 
-# print(print_previous_number(10))
+# print_previous_number(10)
 
 # Exercise 3: Print characters from a string that are present at an even index number
 
-def second_n_value(values):
-    return [value for index, value in enumerate(values) if index % 2 == 0]
+
+def second_n_value(list_values) -> list[int]:
+    if not isinstance(list_values, list):
+        raise TypeError('Input must be a list')
+
+    if len(list_values) == 0:
+        raise ValueError('List cannot be empty')
+
+    if not all(isinstance(item, int) for item in list_values):
+        raise ValueError('All elements must be on integers')
+
+    return [value for index, value in enumerate(list_values) if index % 2 == 0]
+
+
+# print(second_n_value([1, 2, 3, 4]))
+# print(second_n_value([1, 'a', 3, 4]))
+# print(second_n_value(None))
+print(second_n_value(1))
 
 
 def second_n_value1(values):

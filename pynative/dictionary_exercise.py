@@ -95,7 +95,7 @@ def remove_keys(sample_dict1, remove_keys1):
     return {key: sample_dict1[key] for key in sample_dict1 if key not in remove_keys1}
 
 
-print(remove_keys(sample_dict, keys))
+# print(remove_keys(sample_dict, keys))
 
 # Exercise 7: Check if a value exists in a dictionary
 
@@ -107,5 +107,111 @@ def check_insisting_value(my_sample_dict, checking_value):
     # return any(value == checking_value for value in my_sample_dict.values())
     return checking_value in [value for value in my_sample_dict.values()]
 
-print(check_insisting_value(sample_dict7, '200'))
-print(check_insisting_value(sample_dict7, 200))
+# print(check_insisting_value(sample_dict7, '200'))
+# print(check_insisting_value(sample_dict7, 200))
+
+
+# Exercise 6: Delete a list of keys from a dictionary
+
+
+keys6 = ["name", "salary"]
+
+sample_dict6 = {
+    "name": "Kelly",
+    "age": 25,
+    "salary": 8000,
+    "city": "New york"
+}
+
+
+def delete_keys_from_dict(sample_dict, remove_keys):
+    return {key: values for key, values in sample_dict.items() if key not in remove_keys}
+
+
+# print(delete_keys_from_dict(sample_dict6, keys6))
+
+
+# Exercise 7: Check if a value exists in a dictionary
+
+sample_dict7 = {'a': 100, 'b': 200, 'c': 300}
+
+def check_existing_value(price_dict, value):
+    # return {f'{value} present in the dict' if value in price_dict.values()
+    #         else f'{value} not present in the dict':
+    #             value for key, value in price_dict.items()}
+    # return value in price_dict.values()
+    return f'{value} present in the dict' if value in price_dict.values() else False
+
+
+# print(check_existing_value(sample_dict7, 200))
+# print(check_existing_value(sample_dict7, 400))
+
+# Exercise 8: Rename key of a dictionary
+
+def rename_key_dict(my_dict, old_key, new_key):
+    my_dict[new_key] = my_dict.pop(old_key)
+    return my_dict
+
+
+sample_dict8 = {
+    "name": "Kelly",
+    "age":25,
+    "salary": 8000,
+    "city": "New york"
+}
+
+# print(rename_key_dict(sample_dict8, 'city', 'location'))
+
+# Exercise 9: Get the key of a minimum value from the following dictionary
+
+sample_dict9 = {
+    'Physics': 82,
+    'Math': 65,
+    'history': 75
+}
+
+
+def get_minimum_value(my_dict):
+    return min(my_dict, key=my_dict.get)
+
+
+print(get_minimum_value(sample_dict9))
+
+
+# Exercise 10: Change value of a key in a nested dictionary
+
+sample_dict10 = {
+    'emp1': {'name': 'Jhon', 'salary': 7500},
+    'emp2': {'name': 'Emma', 'salary': 8000},
+    'emp3': {'name': 'Brad', 'salary': 500}
+}
+
+ 
+
+
+
+
+# sample_dict_test = {1: 'one', 2: 'two', 3: 'three', 4: 'four'}
+#
+# new_value = {key: 'key is even ' if key % 2 == 0 else 'odd' for key in sample_dict_test.items()}
+# print(new_value)
+
+# sample_dict_test = {'apple': 1, 'banana': 2, 'cherry': 3}
+#
+# new_dict = {key: 'fruit is 2' if value == 2 else 'fruit count is not 2' for key, value in sample_dict_test.items()}
+# print(new_dict)
+
+# sample_dict_test = {'apple': 3, 'banana': 2, 'cherry': 1}
+#
+# sorted_dict = dict(sorted(sample_dict_test.items(), key=lambda item: item[1]))
+# print(sorted_dict)
+
+# some_numbers = [1, 2, 3, 4, 4, 4, 5, 5, 6, 6, 7, 7, 7, 7, 7]
+#
+# max_number = max(some_numbers)
+# print(max_number)
+# count_numbers = {number: some_numbers.count(number) for number in some_numbers}
+# print(count_numbers[max_number])
+#
+# most_frequent_number = max(some_numbers, key=some_numbers.count)
+# print(most_frequent_number)

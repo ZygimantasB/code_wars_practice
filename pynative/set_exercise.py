@@ -64,7 +64,7 @@ def remove_items_once(my_set1, *args):
 numbers_list = [10, 20, 30]
 set15 = {10, 20, 30, 40, 50}
 
-# print(remove_items_once(set15, numbers_list))
+print(remove_items_once(set15, numbers_list))
 
 
 # Exercise 6: Return a set of elements present in Set A or B, but not both

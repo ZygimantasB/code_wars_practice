@@ -65,11 +65,11 @@ class Vehicle4:
 vehicle4 = Vehicle4('Volvo', 99, 999, 20)
 print(vehicle4.seating_capacity())
 
+
 # OOP Exercise 5: Define a property that must have the same value for every class instance (object)
 
 
 class Vehicle5:
-
     color = 'White'
 
     def __init__(self, name, max_speed, mileage):
@@ -88,3 +88,58 @@ class Car5(Vehicle5):
 
 bus5 = Bus5('Audi', 99, 100000)
 print(bus5.color, bus5.name, bus5.mileage, bus5.mileage)
+
+
+# OOP Exercise 6: Class Inheritance
+
+class Vehicle6:
+
+    def __init__(self, name, milage, capacity):
+        self.name = name
+        self.milage = milage
+        self.capacity = capacity
+
+    def fare(self):
+        return self.capacity * 100
+
+
+class Bus6(Vehicle6):
+
+    def fate(self):
+        amount = super().fare()
+        amount += amount * 10 / 100
+        return amount
+
+
+school_bus6 = Bus6('School Volvo', 12, 50)
+print('Total Bus fare is:', school_bus6.fare())
+
+
+# class Vehicle6:
+#
+#     def __init__(self, name, milage, capacity):
+#         self.name = name
+#         self.milage = milage
+#         self.capacity = capacity
+#
+#     def fare(self):
+#         return self.capacity * 100
+#
+#
+# class Bus6(Vehicle6):
+#
+#     def __init__(self, name, milage, capacity):
+#         super().__init__(name, milage, capacity)
+#         # Override the attributes here
+#         self.name = "Overridden Name"
+#         self.milage = 0
+#         self.capacity = 0
+#
+#     def fare(self):
+#         amount = super().fare()
+#         amount += amount * 10 / 100
+#         return amount
+#
+#
+# school_bus6 = Bus6('School Volvo', 12, 50)
+# print('Total Bus fare is:', school_bus6.fare())

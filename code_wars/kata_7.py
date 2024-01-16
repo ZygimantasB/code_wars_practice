@@ -70,4 +70,24 @@ def to_jaden_case(string):
     return ' '.join(word.capitalize() for word in string.split())
 
 
-print(to_jaden_case("How can mirrors be real if our eyes aren't real"))
+# print(to_jaden_case("How can mirrors be real if our eyes aren't real"))
+
+def friend(x):
+    return [name for name in x if len(name) == 4]
+
+
+# print(friend(["Ryan", "Kieran", "Jason", "Yous"],))
+# print(friend(['Ryan', 'abc', 'd']))
+
+def number(bus_stops):
+    total_people = 0
+
+    for on, off in bus_stops:
+        total_people += on - off
+    total_people = max(total_people, 0)
+
+    return total_people
+
+
+bus_stops = [(10, 0), (3, 5), (2, 5)]
+print(number(bus_stops))

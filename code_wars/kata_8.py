@@ -24,4 +24,26 @@ def square(number):
 numbers = [1, 2, 3, 4, 5]
 
 result = list(map(square, numbers))
-print(result)
+# print(result)
+
+
+def _all(seq, fun):
+    return all(fun(i) for i in seq)
+
+
+def get_drink_by_profession(param):
+    profession_to_drink = {
+        'Jabroni': "Patron Tequila",
+        "School Counselor": 	"Anything with Alcohol",
+        "Programmer": "Hipster Craft Beer",
+        "Bike Gang Member": "Moonshine",
+        "Politician": 	"Your tax dollars",
+        "Rapper": 	"Cristal",
+    }
+
+    return profession_to_drink.get(param.title(), 'Beer')
+
+
+# print(get_drink_by_profession('Jabroni'))
+# print(get_drink_by_profession('School Counselor'))
+# print(get_drink_by_profession('Programmer'))

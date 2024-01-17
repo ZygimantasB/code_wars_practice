@@ -47,3 +47,15 @@ def get_drink_by_profession(param):
 # print(get_drink_by_profession('Jabroni'))
 # print(get_drink_by_profession('School Counselor'))
 # print(get_drink_by_profession('Programmer'))
+
+def sum_array(arr):
+    # if arr is None or len(arr) == 0 or len(arr) == 1:
+    #     return 0
+    # sorted_list = sorted(arr)
+    # return sum(sorted_list[1:-1])
+    return sum(sorted(arr)[1:-1]) if arr and len(arr) > 1 else 0
+
+
+print(sum_array([6, 2, 1, 8, 10]))
+print(sum_array([6, 2, 1, 8, 10]))
+print(sum_array([None]))

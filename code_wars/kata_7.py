@@ -90,4 +90,49 @@ def number(bus_stops):
 
 
 bus_stops = [(10, 0), (3, 5), (2, 5)]
-print(number(bus_stops))
+# print(number(bus_stops))
+
+
+def max_multiple(divisor, bound):
+    result = []
+    for number in range(0, bound + 1):
+        if number % divisor == 0 and bound >= number > 0:
+            result.append(number)
+    return max(result)
+    # return bound - (bound % divisor)
+
+
+# print(max_multiple(2, 7))
+# print(max_multiple(10, 50))
+# print(max_multiple(7, 100))
+
+
+def multiple(number):
+    if number % 3 == 0 and number % 5 == 0:
+        return "BangBoom"
+    elif number % 3 == 0:
+        return "Bang"
+    elif number % 5 == 0:
+        return "Boom"
+    else:
+        return "Miss"
+# def multiple(x):
+#     if x % 15 == 0: return "BangBoom"
+#     if x % 5 == 0: return "Boom"
+#     if x % 3 == 0: return "Bang"
+#     return "Miss"
+
+
+# print(multiple(30))
+# print(multiple(3))
+# print(multiple(98))
+# print(multiple(65))
+# print(multiple(23))
+# print(multiple(15))
+
+def filter_list(sample_list):
+    return [number for number in sample_list if isinstance(number, int)]
+    # return [x for x in l if type(x) is not str]
+
+
+print(filter_list([1,2,'a','b']))

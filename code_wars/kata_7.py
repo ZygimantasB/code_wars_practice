@@ -135,4 +135,45 @@ def filter_list(sample_list):
     # return [x for x in l if type(x) is not str]
 
 
-print(filter_list([1,2,'a','b']))
+# print(filter_list([1,2,'a','b']))
+
+
+def is_anagram(test, original):
+    return sorted(test.lower()) == sorted(original.lower())
+
+
+# print(is_anagram('cinema', 'iceman'))
+# print(is_anagram('cinema', 'icema'))
+
+def accum(st):
+    # result = []
+    # for index, char in enumerate(st):
+    #     transformed_char = char.upper() + char.lower() * index
+    #     result.append(transformed_char)
+    # return '-'.join(result)
+    return '-'.join([char.upper() + char.lower() * index for index, char in enumerate(st)])
+
+
+# print(accum('abcd'))
+# print(accum('RqaEzty'))
+# print(accum('cwAt'))
+
+def get_the_vowels(word):
+    vowels = ['a', 'e', 'i', 'o', 'u']
+    count = 0
+    expected_vowel_index = 0
+
+    for char in word:
+        if char == vowels[expected_vowel_index]:
+            count += 1
+            expected_vowel_index = (expected_vowel_index + 1) % len(vowels)
+        elif char == 'a' and expected_vowel_index != 0:
+            # Continue without resetting if 'a' is not the start of the sequence
+            continue
+        # No reset of count or expected_vowel_index for other non-consecutive vowels
+
+    return count
+
+
+print(get_the_vowels('agrtertyfikfmroyrntbvsukldkfa'))
+print(get_the_vowels('erfaiekjudhyfimngukduo'))

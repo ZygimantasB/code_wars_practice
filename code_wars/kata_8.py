@@ -56,6 +56,14 @@ def sum_array(arr):
     return sum(sorted(arr)[1:-1]) if arr and len(arr) > 1 else 0
 
 
-print(sum_array([6, 2, 1, 8, 10]))
-print(sum_array([6, 2, 1, 8, 10]))
-print(sum_array([None]))
+# print(sum_array([6, 2, 1, 8, 10]))
+# print(sum_array([6, 2, 1, 8, 10]))
+# print(sum_array([None]))
+
+
+def repeat_str(repeat, string):
+    return string * repeat
+
+
+# print(repeat_str(6, 'I'))
+# print(repeat_str(6, 'Hello'))

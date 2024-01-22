@@ -67,3 +67,13 @@ def repeat_str(repeat, string):
 
 # print(repeat_str(6, 'I'))
 # print(repeat_str(6, 'Hello'))
+
+
+def make_negative(number):
+    # return -number if number > 0 else number
+    return -abs(number)
+
+# print(make_negative(-1))
+# print(make_negative(1))
+# print(make_negative(-8))
+# print(make_negative(8))

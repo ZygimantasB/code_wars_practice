@@ -175,5 +175,24 @@ def get_the_vowels(word):
     return count
 
 
-print(get_the_vowels('agrtertyfikfmroyrntbvsukldkfa'))
-print(get_the_vowels('erfaiekjudhyfimngukduo'))
+# print(get_the_vowels('agrtertyfikfmroyrntbvsukldkfa'))
+# print(get_the_vowels('erfaiekjudhyfimngukduo'))
+
+def shorter_reverse_longer(a, b):
+    # if len(a) > len(b) or len(a) == len(b):
+    #     return b + a[::-1] + b
+    # else:
+    #     return a + b[::-1] + a
+    return b + a[::-1] + b if len(a) > len(b) or len(a) == len(b) else a + b[::-1] + a
+
+
+# print(shorter_reverse_longer('first', 'abcde'))
+# print(shorter_reverse_longer('hello', 'bau'))
+# print(shorter_reverse_longer('abcde', 'fghi'))
+# print(shorter_reverse_longer('pbwmcskx', 'qvkwwmoaai'))
+
+def square_digits(num):
+    return int(''.join(str(int(digit)**2) for digit in str(num)))
+
+
+# print(square_digits(9119))

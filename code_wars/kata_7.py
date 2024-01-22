@@ -196,3 +196,23 @@ def square_digits(num):
 
 
 # print(square_digits(9119))
+
+def close_to_zero(t):
+    if not t:
+        return 0
+    temperatures = list(map(int, t.split()))
+    temperatures.sort(key=lambda x: (abs(x), -x))
+    return temperatures[0]
+
+
+# print(close_to_zero('-1 50 -4 20 22 -7 0 10 -8'))
+
+
+def is_leap_year(year):
+    return year % 4 == 0 and (year % 100 != 0 or year % 400 == 0)
+
+
+print(is_leap_year(2020))
+print(is_leap_year(2000))
+print(is_leap_year(2015))
+print(is_leap_year(2100))

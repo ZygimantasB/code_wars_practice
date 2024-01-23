@@ -212,7 +212,59 @@ def is_leap_year(year):
     return year % 4 == 0 and (year % 100 != 0 or year % 400 == 0)
 
 
-print(is_leap_year(2020))
-print(is_leap_year(2000))
-print(is_leap_year(2015))
-print(is_leap_year(2100))
+# print(is_leap_year(2020))
+# print(is_leap_year(2000))
+# print(is_leap_year(2015))
+# print(is_leap_year(2100))
+
+def catch_sign_change(lst):
+    if not lst:
+        return 0
+
+    count = 0
+    previous_sign = lst[0] < 0
+
+    for number in lst[1:]:
+        current_sign = number < 0
+        if current_sign != previous_sign:
+            count += 1
+        previous_sign = current_sign
+
+    return count
+
+
+# print(catch_sign_change([1, -3, -4, 0, 5]))
+
+
+def even_or_odd(s):
+    result = ''
+    even_numbers = sum([int(number) for number in s if int(number) % 2 == 0])
+    odd_numbers = sum([int(number) for number in s if int(number) % 2 != 0])
+    if even_numbers > odd_numbers:
+        result = "Even is greater than Odd"
+    elif even_numbers < odd_numbers:
+        result = "Odd is greater than Even"
+    else:
+        result = "Even and Odd are the same"
+    return result
+
+
+# print(even_or_odd('12'))
+# print(even_or_odd('112'))
+# print(even_or_odd('123'))
+
+def pofi(n):
+    # n = n % 4
+    # if n == 0:
+    #     return '1'
+    # elif n == 1:
+    #     return 'i'
+    # elif n == 2:
+    #     return '-1'
+    # else:  # n == 3
+    #     return '-i'
+    return ['1','i','-1','-i'][n%4]
+
+
+print(pofi(12))
+

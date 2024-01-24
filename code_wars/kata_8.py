@@ -77,3 +77,68 @@ def make_negative(number):
 # print(make_negative(1))
 # print(make_negative(-8))
 # print(make_negative(8))
+
+
+def rps(p1, p2):
+    # if p1 == p2:
+    #     return 'Draw!'
+    # elif (p1 == 'rock' and p2 == 'scissors') or (p1 == 'scissors' and p2 == 'paper') \
+    #     or (p1 == 'paper' and p2 == 'rock'):
+    #     return 'Player 1 won!'
+    # else:
+    #     return 'Player 2 won!'
+    beats = {'rock': 'scissors', 'scissors': 'paper', 'paper': 'rock'}
+    if beats[p1] == p2:
+        return 'Plater 1 wins!'
+    elif beats[p2] == p1:
+        return 'Player 2 wins'
+    else:
+        return 'Draw'
+
+
+# print(rps('paper', 'paper'))
+# print(rps('paper', 'scissors'))
+# print(rps('paper', 'rock'))
+
+
+from math import log
+
+
+def logs(x, a, b):
+    return log(a, x) + log(b, x)
+
+
+# print(logs(10, 2 ,3))
+
+from math import floor
+
+def get_average(marks):
+    return floor(sum(marks) / len(marks))
+
+
+# print(get_average([2, 2, 2, 2]))
+
+
+def remove_every_other(my_list):
+    return my_list[::2]
+
+
+# print(remove_every_other(['Hello', 'Goodbye', 'Hello Again']))
+
+class Guesser:
+    def __init__(self, number, lives):
+        self.number = number
+        self.lives = lives
+
+    def guess(self,n):
+        if self.lives <= 0: raise Exception('No lives left')
+        elif self.number == n: return True
+        self.lives -= 1
+        return False
+
+
+# guesser = Guesser(5, 3)
+# print(guesser.guess(3))
+# print(guesser.guess(3))
+# print(guesser.guess(3))
+# print(guesser.guess(5))

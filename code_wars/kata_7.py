@@ -267,4 +267,3 @@ def pofi(n):
 
 
 print(pofi(12))
-

@@ -142,3 +142,46 @@ class Guesser:
 # print(guesser.guess(3))
 # print(guesser.guess(3))
 # print(guesser.guess(5))
+
+
+def converter(mpg):
+    return round(mpg * 0.354006, 2)
+
+
+# print(converter(10))
+
+def solution(string):
+    return string[::-1]
+
+
+# print(solution('world'))
+
+def positive_sum(arr):
+    return sum([number for number in arr if number > 0])
+
+
+# print(positive_sum([1,-4,7,12]))
+
+
+def basic_op(operator, value1, value2):
+    match operator:
+        case '+':
+            return value1 + value2
+        case '-':
+            return value1 - value2
+        case '*':
+            return value1 * value2
+        case '/':
+            return value1 / value2
+
+# def basic_op(operator, value1, value2):
+#     ops = {'+': lambda a, b: a + b,
+#            '-': lambda a, b: a - b,
+#            '*': lambda a, b: a * b,
+#            '/': lambda a, b: a / b}
+#     return ops[operator](value1, value2)
+
+# print(basic_op('+', 4, 7))
+# print(basic_op('-', 4, 7))
+# print(basic_op('*', 4, 7))
+# print(basic_op('/', 4, 7))

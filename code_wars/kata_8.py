@@ -185,3 +185,24 @@ def basic_op(operator, value1, value2):
 # print(basic_op('-', 4, 7))
 # print(basic_op('*', 4, 7))
 # print(basic_op('/', 4, 7))
+
+
+def sum_array(a):
+    return sum(a)
+
+
+# print(sum_array([1, 5.2, 4, 0, -1]))
+
+def how_much_i_love_you(nb_petals):
+    phrases = ["I love you", "a little", "a lot", "passionately", "madly", "not at all"]
+    # The index for the phrase is (petals - 1) % 6, as the list index starts from 0
+    return phrases[(nb_petals - 1) % 6]
+
+
+# print(how_much_i_love_you())
+
+def corrections(x):
+    if x > 0:
+        return str(x) + " is more than zero."
+    else:
+        return str(x) + " is equal to or less than zero."

@@ -1,10 +1,12 @@
 # 1. Write a Python program to sum all the items in a list.
+from random import shuffle
+
 
 class ListSolutions:
 
     def __init__(self):
         self.numbers_list = [1, 2, 3, 33, 4, 9, 10, 10]
-        self.numbers_list1 = [1, 12, 13, 14, 15, 16, 17]
+        self.numbers_list1 = [1, 2, 3, 12, 13, 14, 15, 16, 17]
         self.sample_list = ['abc', 'xyz', 'aba', '1221']
         self.sort_list = [(2, 5), (1, 2), (4, 4), (2, 3), (2, 1)]
         self.duplicated_list = [1, 1, 2, 2, 2, 3, 3, 4, 4, 5, 6, ]
@@ -80,10 +82,56 @@ class ListSolutions:
         # return result
         return [word for index, word in enumerate(self.color_list) if index not in indexes]
 
+    # 13. Write a Python program to generate a 3*4*6 3D array whose each element is *.
+    def generate_3d_array(self):
+        return [[['*' for _ in range(6)] for _ in range(4)] for _ in range(3)]
+
+    # 14. Write a Python program to print the numbers of a specified list after removing even numbers from it.
+    def remove_odd_numbers(self):
+        return [number for number in self.numbers_list if number % 2 == 0]
+
+    def shuffle_list(self):
+        shuffle(self.color_list)
+        return self.color_list
+
+    def print_square_numbers(self):
+        return [number ** 2 for number in range(1, 31)][5:-5]
+
+    def is_prime_number(self, number):
+        if number <= 1:
+            return False
+        for i in range(2, int(number ** 0.5) + 1):
+            if number % i == 0:
+                return False
+        return True
+
+    def all_prime_numbers(self, numbers):
+        return all(self.is_prime_number(num) for num in numbers)
+
+    def difference_between_lists(self):
+        # first_difference = list(set(self.numbers_list) - set(self.numbers_list1))
+        # second_difference = list(set(self.numbers_list1) - set(self.numbers_list))
+        # return first_difference + second_difference
+        first_list = [number for number in self.numbers_list if number not in self.numbers_list1]
+        second_list = [number for number in self.numbers_list1 if number not in self.numbers_list]
+        return first_list + second_list
+    # 20. Write a Python program to access the index of a list.
+    def find_list_index(self):
+        return [(index, color) for index, color in enumerate(self.color_list, start=1)]
+
 
 list_solution = ListSolutions()
 
-print(list_solution.remove_index([0, 4, 5]))
+print(list_solution.find_list_index())
+# print(list_solution.difference_between_lists())
+# print(list_solution.is_prime_number(5))
+# print(list_solution.all_prime_numbers([0, 3, 4, 7, 9]))
+# print(list_solution.all_prime_numbers([3, 5, 7, 13]))
+# print(list_solution.print_square_numbers())
+# print(list_solution.shuffle_list())
+# print(list_solution.remove_odd_numbers())
+# print(list_solution.generate_3d_array())
+# print(list_solution.remove_index([0, 4, 5]))
 # print(list_solution.has_comment_element())
 # print(list_solution.find_word_by_len(10))
 # print(list_solution.find_word_by_len(4))

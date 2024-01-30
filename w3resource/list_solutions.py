@@ -1,5 +1,5 @@
 # 1. Write a Python program to sum all the items in a list.
-from random import shuffle
+from random import shuffle, choice
 
 
 class ListSolutions:
@@ -12,6 +12,8 @@ class ListSolutions:
         self.duplicated_list = [1, 1, 2, 2, 2, 3, 3, 4, 4, 5, 6, ]
         self.word_list = ['a', 'ab', 'asdsafgh', '1221', 'hello', 'world', 'python', 'java', 'javascript', 'c++']
         self.color_list = ['Red', 'Green', 'White', 'Black', 'Pink', 'Yellow']
+        self.char_list = ['P', 'Y', 'T', 'H', 'O', 'N']
+        self.shallow_list = [[2, 4, 3], [1, 5, 6], [9], [7, 9, 0]]
 
     # 1. Write a Python program to sum all the items in a list.
     def sum_list(self):
@@ -116,13 +118,37 @@ class ListSolutions:
         second_list = [number for number in self.numbers_list1 if number not in self.numbers_list]
         return first_list + second_list
     # 20. Write a Python program to access the index of a list.
+
     def find_list_index(self):
         return [(index, color) for index, color in enumerate(self.color_list, start=1)]
 
+    def convert_to_string(self):
+        return ''.join(self.char_list)
 
-list_solution = ListSolutions()
+    def flatten_the_list(self):
+        return [element for sublist in self.shallow_list for element in sublist]
+#     24. Write a Python program to append a list to the second list.
 
-print(list_solution.find_list_index())
+    def append_to_second_list(self):
+        # for number in self.numbers_list:
+        #     self.color_list.append(number)
+        # return self.color_list
+        # return self.numbers_list + self.color_list
+        return [item for sublist in [self.numbers_list, self.char_list] for item in sublist]
+
+    # 25. Write a Python program to select an item randomly from a list.
+    def select_random_number(self):
+        return choice(self.char_list)
+
+    # 26. Write a Python program to check whether two lists are circularly identical.
+    
+
+
+# print(list_solution.select_random_number())
+# print(list_solution.append_to_second_list())
+# print(list_solution.flatten_the_list())
+# print(list_solution.convert_to_string())
+# print(list_solution.find_list_index())
 # print(list_solution.difference_between_lists())
 # print(list_solution.is_prime_number(5))
 # print(list_solution.all_prime_numbers([0, 3, 4, 7, 9]))

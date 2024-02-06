@@ -15,6 +15,8 @@ class LambdaSolutions:
         self.string_number_list = ['a', 1, 'hello', 2, 'world', 3, 'python', 4, 'is', 5, 'awesome']
         self.numbers1 = [1, 2, 3, 5, 7, 8, 9, 10]
         self.numbers2 = [1, 2, 4, 8, 9]
+        self.positive_negative = [-1, 2, -3, 5, 7, 8, 9, -10]
+        self.grades = [['S ROY', 1.0], ['B BOSE', 3.0], ['N KAR', 2.0], ['C DUTTA', 1.0], ['G GHOSH', 1.0]]
 
 
     def add_numbers(self, number):
@@ -82,9 +84,34 @@ class LambdaSolutions:
     def find_intersection(self):
         return list(filter(lambda number: number in self.numbers1, self.numbers2))
 
+    def regenerate_list(self):
+        # positive_number = list(filter(lambda number: number >= 0, self.positive_negative))
+        # negative_number = list(filter(lambda number: number <= 0, self.positive_negative))
+        # return positive_number + negative_number
+        return sorted(self.positive_negative, key=lambda number: (number < 0, number))
+
+    def count_even_odd_number(self):
+        even_numbers =  len(list(filter(lambda number: number % 2 == 0, self.numbers1)))
+        odd_numbers = len(list(filter(lambda number: number % 2 != 0, self.numbers1)))
+        return f'Even: {even_numbers} Odd: {odd_numbers}'
+
+    def filter_weekdays(self):
+        return list(filter(lambda day: len(day) == 6, self.weekdays))
+
+    def add_two_lists(self):
+        return list(map(lambda number1, number2: number1 + number2, self.numbers1, self.numbers2))
+
+    def find_second_grade(self):
+        return sorted(self.grades, key=lambda grade: grade[1])
+
 
 lambda_solutions = LambdaSolutions()
-print(lambda_solutions.find_intersection())
+print(lambda_solutions.find_second_grade())
+# print(lambda_solutions.add_two_lists())
+# print(lambda_solutions.filter_weekdays())
+# print(lambda_solutions.count_even_odd_number())
+# print(lambda_solutions.regenerate_list())
+# print(lambda_solutions.find_intersection())
 # print(lambda_solutions.create_fibonacci(2))
 # print(lambda_solutions.is_number())
 # print(lambda_solutions.extract_date_time())

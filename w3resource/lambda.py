@@ -129,6 +129,7 @@ class LambdaSolutions:
         return list(map(lambda number: number ** multiply_number, self.numbers1))
 
 
+
 lambda_solutions = LambdaSolutions()
 print(lambda_solutions.multiply_list(2))
 # print(lambda_solutions.find_numbers())

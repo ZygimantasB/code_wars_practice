@@ -124,7 +124,7 @@ class LambdaSolutions:
         sorted_numbers = sorted(filtered_numbers)
         return sorted_numbers
 
-    # 21 exercise
+    # 21 exercise.
     def multiply_list(self, multiply_number):
         return list(map(lambda number: number ** multiply_number, self.numbers1))
 

@@ -17,6 +17,10 @@ class LambdaSolutions:
         self.numbers2 = [1, 2, 4, 8, 9]
         self.positive_negative = [-1, 2, -3, 5, 7, 8, 9, -10]
         self.grades = [['S ROY', 1.0], ['B BOSE', 3.0], ['N KAR', 2.0], ['C DUTTA', 1.0], ['G GHOSH', 1.0]]
+        self.divisible_number = [19, 65, 57, 39, 152, 639, 121, 44, 90, 190]
+        self.words_example = ['php', 'w3r', 'Python', 'abcd', 'Java', 'aaa']
+        self.words_for_anagram = ['bcda', 'abce', 'cbda', 'cbea', 'adcb']
+        self.find_numbers_sample = '23 safs8 5 sdfsd8 sdfs 56 21sfs 20 5'
 
 
     def add_numbers(self, number):
@@ -104,9 +108,38 @@ class LambdaSolutions:
     def find_second_grade(self):
         return sorted(self.grades, key=lambda grade: grade[1])
 
+    def find_divisible_numbers(self):
+        return list(filter(lambda number: number % 19 == 0 or number % 13 == 0, self.divisible_number))
+
+    def find_palindrome(self):
+        return list(filter(lambda word: word == word[::-1], self.words_example))
+
+    def make_anagram(self, this_word):
+        return list(filter(lambda word: sorted(word) == sorted(this_word), self.words_for_anagram))
+
+    def find_numbers(self):
+        words = self.find_numbers_sample.split()
+        numbers = list(map(int, filter(lambda word: word.isdigit(), words)))
+        filtered_numbers = list(filter(lambda number: len(str(number)) > len(numbers), numbers))
+        sorted_numbers = sorted(filtered_numbers)
+        return sorted_numbers
+
+    # 21 exercise
+    def multiply_list(self, multiply_number):
+        return list(map(lambda number: number ** multiply_number, self.numbers1))
+
 
 lambda_solutions = LambdaSolutions()
-print(lambda_solutions.find_second_grade())
+print(lambda_solutions.multiply_list(2))
+# print(lambda_solutions.find_numbers())
+# print(lambda_solutions.find_numbers())
+# print(lambda_solutions.make_anagram('abcd'))
+# print(lambda_solutions.make_anagram('bcda'))
+# print(lambda_solutions.make_anagram('cbea'))
+
+# print(lambda_solutions.find_palindrome())
+# print(lambda_solutions.find_divisible_numbers())
+# print(lambda_solutions.find_second_grade())
 # print(lambda_solutions.add_two_lists())
 # print(lambda_solutions.filter_weekdays())
 # print(lambda_solutions.count_even_odd_number())

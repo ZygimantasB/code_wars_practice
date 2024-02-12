@@ -21,6 +21,8 @@ class LambdaSolutions:
         self.words_example = ['php', 'w3r', 'Python', 'abcd', 'Java', 'aaa']
         self.words_for_anagram = ['bcda', 'abce', 'cbda', 'cbea', 'adcb']
         self.find_numbers_sample = '23 safs8 5 sdfsd8 sdfs 56 21sfs 20 5'
+        self.sample_names = ['sally', 'Dylan', 'rebecca', 'Diana', 'Joanne', 'keith']
+        self.negative_positive_numbers = [2, 4, -6, -9, 11, -12, 14, -5, 17]
 
 
     def add_numbers(self, number):
@@ -128,10 +130,31 @@ class LambdaSolutions:
     def multiply_list(self, multiply_number):
         return list(map(lambda number: number ** multiply_number, self.numbers1))
 
+    def sum_sample_names(self):
+        # no_upper_case = list(filter(lambda name: name[0].islower() and name[1:].islower(), self.sample_names))
+        # return len(''.join(no_upper_case))
+        filtered_names = filter(lambda name: name[0].isupper(), self.sample_names)
+        lengths = map(len, filtered_names)
+        return sum(lengths)
+
+    def add_negative_positive_numbers(self):
+        negative_numbers = sum(list(filter(lambda number: number < 0, self.negative_positive_numbers)))
+        positive_numbers = sum(list(filter(lambda number: number > 0, self.negative_positive_numbers)))
+        return f'Negative: {negative_numbers}, Positive: {positive_numbers}'
+
+    def find_divisible_numbers_new(self, start, end):
+        return [
+            number for number in range(start, end + 1)
+            if all(map(lambda x: int(x) != 0 and number % int(x) == 0, str(number)))
+        ]
+    # 25. Write a Python program to create the next bigger number by rearranging the digits of a given number.
 
 
 lambda_solutions = LambdaSolutions()
-print(lambda_solutions.multiply_list(2))
+print(lambda_solutions.find_divisible_numbers_new(1, 12))
+# print(lambda_solutions.add_negative_positive_numbers())
+# print(lambda_solutions.sum_sample_names())
+# print(lambda_solutions.multiply_list(2))
 # print(lambda_solutions.find_numbers())
 # print(lambda_solutions.find_numbers())
 # print(lambda_solutions.make_anagram('abcd'))

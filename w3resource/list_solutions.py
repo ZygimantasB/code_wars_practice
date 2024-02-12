@@ -14,6 +14,9 @@ class ListSolutions:
         self.color_list = ['Red', 'Green', 'White', 'Black', 'Pink', 'Yellow']
         self.char_list = ['P', 'Y', 'T', 'H', 'O', 'N']
         self.shallow_list = [[2, 4, 3], [1, 5, 6], [9], [7, 9, 0]]
+        self.list1 = [10, 10, 0, 0, 10]
+        self.list2 = [10, 10, 10, 0, 0]
+        self.list3 = [1, 10, 10, 0, 0]
 
     # 1. Write a Python program to sum all the items in a list.
     def sum_list(self):
@@ -141,9 +144,13 @@ class ListSolutions:
         return choice(self.char_list)
 
     # 26. Write a Python program to check whether two lists are circularly identical.
-    
+    def are_circularly_identical(self):
+        return ' '.join(map(str, self.list1)) in ' '.join(map(str, self.list2 * 2))
 
 
+list_solution = ListSolutions()
+
+print(list_solution.are_circularly_identical())
 # print(list_solution.select_random_number())
 # print(list_solution.append_to_second_list())
 # print(list_solution.flatten_the_list())

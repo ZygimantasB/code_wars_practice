@@ -17,6 +17,8 @@ class ListSolutions:
         self.list1 = [10, 10, 0, 0, 10]
         self.list2 = [10, 10, 10, 0, 0]
         self.list3 = [1, 10, 10, 0, 0]
+        self.sublist1 = [10, 20, 30, 40]
+        self.sublist2 = ['X', 'Y', 'Z']
 
     # 1. Write a Python program to sum all the items in a list.
     def sum_list(self):
@@ -147,10 +149,77 @@ class ListSolutions:
     def are_circularly_identical(self):
         return ' '.join(map(str, self.list1)) in ' '.join(map(str, self.list2 * 2))
 
+    # 27. Write a Python program to find the second smallest number in a list.
+    def find_second_smallest(self):
+        unique_numbers = list(set(self.numbers_list))
+        if len(unique_numbers) < 2: return None
+        else: return sorted(unique_numbers)[1]
+
+    def find_second_largest_number(self):
+        unique_numbers = list(set(self.numbers_list))
+        if len(unique_numbers) < 2: return None
+        else: return sorted(unique_numbers)[-2]
+
+    # 29. Write a Python program to get unique values from a list.
+    def get_unique_values(self):
+        # return list(set(self.numbers_list))
+        unique_list = []
+        for number in self.duplicated_list:
+            if number not in unique_list:
+                unique_list.append(number)
+            # else:
+            #     unique_list
+        return unique_list, self.duplicated_list
+
+    # 30. Write a Python program to get the frequency of elements in a list.
+    def count_values(self):
+        # return {value: self.duplicated_list.count(value) for value in self.duplicated_list}
+        count_dict = {}
+        for value in self.duplicated_list:
+            if value in count_dict:
+                count_dict[value] += 1
+            else:
+                count_dict[value] = 1
+        return count_dict
+    # 31. Write a Python program to count the number of elements in a list within a specified range.
+
+    def count_values_in_range(self, range_start, range_end):
+        # count_within_range = 0
+        # for element in self.duplicated_list:
+        #     if range_start <= element <= range_end:
+        #         count_within_range += 1
+        # return count_within_range
+        # count_values = 0
+        # values_range = range(range_start, range_end + 1)
+        # for value in self.duplicated_list:
+        #     if value in values_range:
+        #         count_values += 1
+        # return count_values
+        # return len([element for element in self.duplicated_list if range_start <= element <= range_end])
+        return len(list(filter(lambda value: range_start <= value <= range_end, self.duplicated_list)))
+
+    # 32. Write a Python program to check whether a list contains a sublist.
+    def check_if_list_contains_sublist(self):
+        sublist_length = len(self.duplicated_list)
+        return any(
+            (self.numbers_list == self.duplicated_list[i:sublist_length + i]) for i in range(len(self.duplicated_list) -
+                                                                                             sublist_length + 1))
+    # 33. Write a Python program to generate all sublists of a list.
+    def generate_all_sublist(self):
+        # return [self.sublist1[i: j] for i in range(len(self.sublist1)) for j in range(i + 1, len(self.sublist1) + 1)]
+        return [self.sublist2[i: j] for i in range(len(self.sublist2)) for j in range(i + 1, len(self.sublist2) + 1)]
+
 
 list_solution = ListSolutions()
 
-print(list_solution.are_circularly_identical())
+print(list_solution.generate_all_sublist())
+# print(list_solution.check_if_list_contains_sublist())
+# print(list_solution.count_values_in_range(1, 3))
+# print(list_solution.count_values())
+# print(list_solution.get_unique_values())
+# print(list_solution.find_second_largest_number())
+# print(list_solution.find_second_smallest())
+# print(list_solution.are_circularly_identical())
 # print(list_solution.select_random_number())
 # print(list_solution.append_to_second_list())
 # print(list_solution.flatten_the_list())

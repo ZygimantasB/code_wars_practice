@@ -19,6 +19,14 @@ class ListSolutions:
         self.list3 = [1, 10, 10, 0, 0]
         self.sublist1 = [10, 20, 30, 40]
         self.sublist2 = ['X', 'Y', 'Z']
+        self.color1 = "Red", "Green", "Orange", "White"
+        self.color2 = "Black", "Green", "White", "Pink"
+        self.first_5_numbers = [0, 1, 2, 3, 4, 5]
+        self.word_list_1 = ['be', 'have', 'do', 'say', 'get', 'make', 'go', 'know', 'take', 'see', 'come', 'think',
+                     'look', 'want', 'give', 'use', 'find', 'tell', 'ask', 'work', 'seem', 'feel', 'leave', 'call']
+        self.chars_list1 = ['a', 'b', 'c', 'd', 'e', 'f']
+        self.chars_list2 = ['d', 'e', 'f', 'g', 'h']
+
 
     # 1. Write a Python program to sum all the items in a list.
     def sum_list(self):
@@ -209,10 +217,61 @@ class ListSolutions:
         # return [self.sublist1[i: j] for i in range(len(self.sublist1)) for j in range(i + 1, len(self.sublist1) + 1)]
         return [self.sublist2[i: j] for i in range(len(self.sublist2)) for j in range(i + 1, len(self.sublist2) + 1)]
 
+    # 35. Write a Python program to create a list by concatenating a given list with a range from 1 to n.
+    def concat_values(self, n):
+        return [f'{char}{value}' for value in range(1, n + 1) for char in ['q', 'p']]
+
+    # 36. Write a Python program to get a variable with an identification number or string.
+    def get_variable_id(self, var):
+        return id(var)
+
+    # 37. Write a Python program to find common items in two lists.
+    def find_comment_items(self):
+        # return set(self.color1) & set(self.color2)
+        return [value for value in self.color1 if value in self.color2]
+
+    def change_value_position(self):
+        for i in range(0, len(self.first_5_numbers), 2):
+            if i+1 < len(self.first_5_numbers):
+                self.first_5_numbers[i], self.first_5_numbers[i+1] = self.first_5_numbers[i+1], self.first_5_numbers[i]
+        return self.first_5_numbers
+
+    def combine_integers_to_one(self):
+        # return ''.join([str(number) for number in self.numbers_list])
+        return ''.join(map(str, self.numbers_list))
+
+    def take_first_char(self):
+        # return [word[0] for word in self.word_list_1]
+        # return list(map(lambda word: word[0], self.word_list_1))
+        return list(filter(lambda word: word[0], self.word_list_1))
+
+    def create_multiple_lists(self):
+        # obj = {}
+        # for number in range(1, 21):
+        #     obj[str(number)] = []
+        # return obj
+        return {str(number): [] for number in range(1, 21)}
+
+    # 42. Write a Python program to find missing and additional values in two lists.
+    def find_missing_values(self):
+        # first_missing_chars = [char for char in self.chars_list1 if char not in self.chars_list2]
+        first_missing_chars = list(filter(lambda char: char not in self.chars_list2, self.chars_list1))
+        second_missing_chars = [char for char in self.chars_list2 if char not in self.chars_list1]
+        return first_missing_chars, second_missing_chars
+
 
 list_solution = ListSolutions()
 
-print(list_solution.generate_all_sublist())
+print(list_solution.find_missing_values())
+# print(list_solution.create_multiple_lists())
+# print(list_solution.take_first_char())
+# print(list_solution.combine_integers_to_one())
+# print(list_solution.change_value_position())
+# print(list_solution.find_comment_items())
+# print(list_solution.get_variable_id('hello'))
+# print(list_solution.get_variable_id('world'))
+# print(list_solution.concat_values(5))
+# print(list_solution.generate_all_sublist())
 # print(list_solution.check_if_list_contains_sublist())
 # print(list_solution.count_values_in_range(1, 3))
 # print(list_solution.count_values())

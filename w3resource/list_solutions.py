@@ -26,6 +26,8 @@ class ListSolutions:
                      'look', 'want', 'give', 'use', 'find', 'tell', 'ask', 'work', 'seem', 'feel', 'leave', 'call']
         self.chars_list1 = ['a', 'b', 'c', 'd', 'e', 'f']
         self.chars_list2 = ['d', 'e', 'f', 'g', 'h']
+        self.one_to_fifteen = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+        self.pair_of_values = [(1, 2), (3, 4), (1, 2), (5, 6), (7, 8), (1, 2), (3, 4), (3, 4), (7, 8), (9, 10)]
 
 
     # 1. Write a Python program to sum all the items in a list.
@@ -259,10 +261,34 @@ class ListSolutions:
         second_missing_chars = [char for char in self.chars_list2 if char not in self.chars_list1]
         return first_missing_chars, second_missing_chars
 
+    def generate_three_lists(self):
+        return [[5*i + j for j in range(1, 6)] for i in range(5)]
+
+    # 45. Write a Python program to convert a pair of values into a sorted unique array.
+    def convert_pair_values_to_list(self):
+        # return set([element for pair in self.pair_of_values for element in pair])
+        return sorted(set().union(*self.pair_of_values))
+
+    # 46. Write a Python program to select the odd items from a list.
+    def select_odd_item(self):
+        # return [number for number in self.one_to_fifteen if number % 2 != 0]
+        return list(filter(lambda odd_number: odd_number % 2 != 0, self.one_to_fifteen))
+
+    # 47. Write a Python program to insert an element before each element of a list.
+    def insert_element_before(self, element):
+        list_with_sublist = [[element, original_element] for original_element in self.numbers_list]
+        flat_list = [item for sublist in list_with_sublist for item in sublist]
+        return flat_list, list_with_sublist
+
 
 list_solution = ListSolutions()
 
-print(list_solution.find_missing_values())
+
+print(list_solution.insert_element_before('ac'))
+# print(list_solution.select_odd_item())
+# print(list_solution.convert_pair_values_to_list())
+# print(list_solution.generate_three_lists())
+# print(list_solution.find_missing_values())
 # print(list_solution.create_multiple_lists())
 # print(list_solution.take_first_char())
 # print(list_solution.combine_integers_to_one())

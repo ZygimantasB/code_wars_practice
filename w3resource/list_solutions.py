@@ -1,4 +1,5 @@
 # 1. Write a Python program to sum all the items in a list.
+import itertools
 from random import shuffle, choice
 
 
@@ -28,6 +29,12 @@ class ListSolutions:
         self.chars_list2 = ['d', 'e', 'f', 'g', 'h']
         self.one_to_fifteen = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
         self.pair_of_values = [(1, 2), (3, 4), (1, 2), (5, 6), (7, 8), (1, 2), (3, 4), (3, 4), (7, 8), (9, 10)]
+        self.nested_colors =  [['Red'], ['Green'], ['Black']]
+        self.two_lists = ["Black", "Red", "Maroon", "Yellow"], ["#000000", "#FF0000", "#800000", "#FFFF00"]
+        self.sort_list_sec_value = [{'key': {'subkey': 1}}, {'key': {'subkey': 10}}, {'key': {'subkey': 5}}]
+        self.char_list_values = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n']
+        self.two_color_lists = ["red", "orange", "green", "blue", "white"], ["black", "yellow", "green", "blue"]
+        self.original_list = [{'key1': 'value1', 'key2': 'value2'}, {'key1': 'value3', 'key2': 'value4'}]
 
 
     # 1. Write a Python program to sum all the items in a list.
@@ -280,11 +287,61 @@ class ListSolutions:
         flat_list = [item for sublist in list_with_sublist for item in sublist]
         return flat_list, list_with_sublist
 
+    def print_nested_list(self):
+        # for sublist in self.nested_colors:
+        #     for color in sublist:
+        #         print(color)
+        return '\n'.join([color for sublist in self.nested_colors for color in sublist])
+
+    # 49. Write a Python program to convert a list to a list of dictionaries.
+    def convert_list_dictionary(self):
+        return [{'color_name': color, 'color code': code} for color, code in zip(self.two_lists[0], self.two_lists[1])]
+
+    # 50. Write a Python program to sort a list of nested dictionaries.
+    def sort_list_sec_value_new(self):
+        self.sort_list_sec_value.sort(key=lambda element: element['key']['subkey'], reverse=True)
+        return self.sort_list_sec_value
+
+    # 51. Write a Python program to split a list every Nth element.
+    def split_list_nth_value(self, step):
+        return [self.char_list_values[char::step] for char in range(step)]
+
+    def compute_color_list(self):
+        # first_sec_list = [color for color in self.two_color_lists[0] if color not in self.two_color_lists[1]]
+        first_sec_list = list(filter(lambda color: color not in self.two_lists[1], self.two_color_lists[0]))
+        sec_first_list = [color for color in self.two_color_lists[1] if self.two_color_lists not in self.two_color_lists[0]]
+        return first_sec_list, sec_first_list
+
+    # 53. Write a Python program to create a list with infinite elements.
+    import itertools
+    def create_infinite_list(self):
+        c = itertools.count()
+        print(next(c))
+        print(next(c))
+        print(next(c))
+        print(next(c))
+
+    # 54. Write a Python program to concatenate elements of a list.
+    def concat_elements_in_list(self):
+        # return ''.join([color.lower() for color in self.color_list])
+        return ''.join(map(lambda color:color.lower(), self.color_list))
+
+    # 55. Write a Python program to remove key-value pairs from a list of dictionaries.
+    def remove_key_value_pairs(self):
+        return [{key: value for key, value in elements.items() if key != 'key1'} for elements in self.original_list]
+
 
 list_solution = ListSolutions()
 
-
-print(list_solution.insert_element_before('ac'))
+print(list_solution.remove_key_value_pairs())
+# print(list_solution.concat_elements_in_list())
+# print(list_solution.create_infinite_list())
+# print(list_solution.compute_color_list())
+# print(list_solution.split_list_nth_value(3))
+# print(list_solution.sort_list_sec_value_new())
+# print(list_solution.convert_list_dictionary())
+# print(list_solution.print_nested_list())
+# print(list_solution.insert_element_before('ac'))
 # print(list_solution.select_odd_item())
 # print(list_solution.convert_pair_values_to_list())
 # print(list_solution.generate_three_lists())

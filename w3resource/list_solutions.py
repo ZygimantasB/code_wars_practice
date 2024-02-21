@@ -1,4 +1,5 @@
 # 1. Write a Python program to sum all the items in a list.
+import ast
 import itertools
 from random import shuffle, choice
 
@@ -20,6 +21,7 @@ class ListSolutions:
         self.list3 = [1, 10, 10, 0, 0]
         self.sublist1 = [10, 20, 30, 40]
         self.sublist2 = ['X', 'Y', 'Z']
+        self.one_to_three = [1, 2, 3]
         self.color1 = "Red", "Green", "Orange", "White"
         self.color2 = "Black", "Green", "White", "Pink"
         self.first_5_numbers = [0, 1, 2, 3, 4, 5]
@@ -35,6 +37,8 @@ class ListSolutions:
         self.char_list_values = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n']
         self.two_color_lists = ["red", "orange", "green", "blue", "white"], ["black", "yellow", "green", "blue"]
         self.original_list = [{'key1': 'value1', 'key2': 'value2'}, {'key1': 'value3', 'key2': 'value4'}]
+        self.color_string = "['Red', 'Green', 'White']"
+        self.two_lists_line = [[1, 3, 5, 7, 9, 10], [2, 4, 6, 8]]
 
 
     # 1. Write a Python program to sum all the items in a list.
@@ -330,10 +334,64 @@ class ListSolutions:
     def remove_key_value_pairs(self):
         return [{key: value for key, value in elements.items() if key != 'key1'} for elements in self.original_list]
 
+    # 56. Write a Python program to convert a string to a list.
+
+    import ast
+
+    def convert_string_list(self):
+        # return eval(self.color_string)
+        return ast.literal_eval(self.color_string)
+
+    # 57. Write a Python program to check if all items in a given list of strings are equal to a given string.
+
+    def check_value_list(self, compare_color):
+        return all(color == compare_color for color in self.color_list)
+
+    # 58. Write a Python program to replace the last element in a list with another list.
+    def replace_last_element_list(self, new_list):
+        self.two_lists_line[0] = self.two_lists_line[0][:-1] + new_list
+        return self.two_lists_line[0]
+
+    # 59. Write a Python program to check whether the n-th element exists in a given list.
+    def check_element_exist_list(self, index):
+        return index < len(self.one_to_fifteen)
+
+    # 60. Write a Python program to find a tuple, the smallest second index value from a list of tuples.
+    def find_second_smallest_value(self):
+        return sorted(self.pair_of_values, key=lambda value:value[1])[0]
+
+    # 61. Write a Python program to create a list of empty dictionaries.
+    def create_list_empty_dict(self, dict_range):
+        return [{} for _ in range(dict_range)]
+
+    # 62. Write a Python program to print a list of space-separated elements.
+    def print_values_seperated_space(self):
+        return ' '.join([str(number) for number in self.one_to_fifteen])
+
+    # 63. Write a Python program to insert a given string at the beginning of all items in a list.
+    def insert_string_beginning(self, my_word):
+        # return [my_word + str(number) for number in self.one_to_fifteen]
+        return list(map(lambda number: my_word + str(number), self.one_to_fifteen))
+
+    # 64. Write a Python program to iterate over two lists simultaneously.
+    def iterate_over_two_lists(self):
+        return '\n'.join([str([char, numbers]) for char, numbers in zip(self.one_to_three, self.sublist2 )])
+
 
 list_solution = ListSolutions()
 
-print(list_solution.remove_key_value_pairs())
+print(list_solution.iterate_over_two_lists())
+# print(list_solution.insert_string_beginning('emp'))
+# print(list_solution.print_values_seperated_space())
+# print(list_solution.create_list_empty_dict(10))
+# print(list_solution.find_second_smallest_value())
+# print(list_solution.check_element_exist_list(1))
+# print(list_solution.replace_last_element_list([2, 4, 6, 8]))
+# print(list_solution.check_value_list('red'))
+# print(list_solution.check_value_list('White'))
+# print(list_solution.check_value_list(['Red', 'Green', 'White', 'Black', 'Pink', 'Yellow']))
+# print(list_solution.convert_string_list())
+# print(list_solution.remove_key_value_pairs())
 # print(list_solution.concat_elements_in_list())
 # print(list_solution.create_infinite_list())
 # print(list_solution.compute_color_list())

@@ -39,6 +39,8 @@ class ListSolutions:
         self.original_list = [{'key1': 'value1', 'key2': 'value2'}, {'key1': 'value3', 'key2': 'value4'}]
         self.color_string = "['Red', 'Green', 'White']"
         self.two_lists_line = [[1, 3, 5, 7, 9, 10], [2, 4, 6, 8]]
+        self.random_number_list = [3, 4, 0, 0, 0, 6, 2, 0, 6, 7, 6, 0, 0, 0, 9, 10, 7, 4, 4, 5, 3, 0, 0, 2, 9, 7, 1]
+        self.list_pairs = [[1, 2, 3], [4, 5, 6], [10, 11, 12], [7, 8, 9]]
 
 
     # 1. Write a Python program to sum all the items in a list.
@@ -377,10 +379,46 @@ class ListSolutions:
     def iterate_over_two_lists(self):
         return '\n'.join([str([char, numbers]) for char, numbers in zip(self.one_to_three, self.sublist2 )])
 
+    def add_zeroes_end(self):
+        # self.random_number_list.sort()
+        # return list(reversed(self.random_number_list))
+        # result = []
+        # count_zero = sum(1 for number in self.random_number_list if number == 0)
+        # remove_zero = [number for number in self.random_number_list if number != 0]
+        # for number in remove_zero:
+        #     result.append(number)
+        # for _ in range(1, count_zero + 1):
+        #     result.append(0)
+        # return result
+        self.random_number_list.sort(key=lambda number: number == 0)
+        return self.random_number_list
+
+    # 66. Write a Python program to find the list in a list of lists whose sum of elements is the highest.
+    def find_highest_list(self):
+        # return self.list_pairs
+        # return min(self.list_pairs, key=sum)
+        return max(self.list_pairs, key=sum)
+
+    # 67. Write a Python program to find all the values in a list that are greater than a specified number.
+    def find_value_higher_specific_number(self, checking_number):
+        return all(number >= checking_number for number in self.numbers_list)
+
+    # 68. Write a Python program to extend a list without appending.
+    def extend_list(self):
+        sample_data1 = [10, 20, 30]
+        sample_data2 = [40, 50, 60]
+        sample_data1[:0] = sample_data2
+        print(sample_data1)
+
 
 list_solution = ListSolutions()
 
-print(list_solution.iterate_over_two_lists())
+
+print(list_solution.extend_list())
+# print(list_solution.find_value_higher_specific_number(1))
+# print(list_solution.find_highest_list())
+# print(list_solution.add_zeroes_end())
+# print(list_solution.iterate_over_two_lists())
 # print(list_solution.insert_string_beginning('emp'))
 # print(list_solution.print_values_seperated_space())
 # print(list_solution.create_list_empty_dict(10))

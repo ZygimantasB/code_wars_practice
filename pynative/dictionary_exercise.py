@@ -88,6 +88,7 @@ sample_dict = {
 # Keys to remove
 keys = ["name", "salary"]
 
+
 # Exercise 6: Delete a list of keys from a dictionary
 
 
@@ -106,6 +107,7 @@ def check_insisting_value(my_sample_dict, checking_value):
     # return checking_value in my_sample_dict.values()
     # return any(value == checking_value for value in my_sample_dict.values())
     return checking_value in [value for value in my_sample_dict.values()]
+
 
 # print(check_insisting_value(sample_dict7, '200'))
 # print(check_insisting_value(sample_dict7, 200))
@@ -135,6 +137,7 @@ def delete_keys_from_dict(sample_dict, remove_keys):
 
 sample_dict7 = {'a': 100, 'b': 200, 'c': 300}
 
+
 def check_existing_value(price_dict, value):
     # return {f'{value} present in the dict' if value in price_dict.values()
     #         else f'{value} not present in the dict':
@@ -155,7 +158,7 @@ def rename_key_dict(my_dict, old_key, new_key):
 
 sample_dict8 = {
     "name": "Kelly",
-    "age":25,
+    "age": 25,
     "salary": 8000,
     "city": "New york"
 }
@@ -177,7 +180,6 @@ def get_minimum_value(my_dict):
 
 print(get_minimum_value(sample_dict9))
 
-
 # Exercise 10: Change value of a key in a nested dictionary
 
 sample_dict10 = {
@@ -186,11 +188,13 @@ sample_dict10 = {
     'emp3': {'name': 'Brad', 'salary': 500}
 }
 
- 
+
+def multiply_items_dictionary(dict_values, multiply_value):
+    return {key: value * multiply_value for key, value in dict_values.items()}
 
 
 
-
+print(multiply_items_dictionary({'data1': 100, 'data2': -54, 'data3': 247}, 2))
 # sample_dict_test = {1: 'one', 2: 'two', 3: 'three', 4: 'four'}
 #
 # new_value = {key: 'key is even ' if key % 2 == 0 else 'odd' for key in sample_dict_test.items()}

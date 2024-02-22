@@ -2,6 +2,8 @@
 import ast
 import itertools
 from random import shuffle, choice
+from itertools import groupby
+
 
 
 class ListSolutions:
@@ -41,6 +43,10 @@ class ListSolutions:
         self.two_lists_line = [[1, 3, 5, 7, 9, 10], [2, 4, 6, 8]]
         self.random_number_list = [3, 4, 0, 0, 0, 6, 2, 0, 6, 7, 6, 0, 0, 0, 9, 10, 7, 4, 4, 5, 3, 0, 0, 2, 9, 7, 1]
         self.list_pairs = [[1, 2, 3], [4, 5, 6], [10, 11, 12], [7, 8, 9]]
+        self.digital_number_sublist_pair = [[10, 20], [40], [30, 56, 25], [10, 20], [33], [40]]
+        self.words_random_characters = ['abcd', 'abc', 'bcd', 'bkie', 'cder', 'cdsw', 'sdfsd', 'dagfa', 'acjd']
+        self.list_with_sublist = [0, 10, [20, 30], 40, 50, [60, 70, 80], [90, 100, 110, 120]]
+        self.numbers_list2 = [0, 0, 1, 2, 3, 4, 4, 5, 6, 6, 6, 7, 8, 9, 4, 4]
 
 
     # 1. Write a Python program to sum all the items in a list.
@@ -410,11 +416,41 @@ class ListSolutions:
         sample_data1[:0] = sample_data2
         print(sample_data1)
 
+    def remove_duplicates_sublist(self):
+        no_duplicated_list = list(map(list, set(map(tuple, self.digital_number_sublist_pair))))
+        no_duplicated_list.sort(key=self.digital_number_sublist_pair.index)
+        return no_duplicated_list
+
+    def starts_with_character(self, starting_char):
+        # return [word for word in self.words_random_characters if word[0] == starting_char]
+        return list(filter(lambda word: word.startswith(starting_char), self.words_random_characters))
+
+    # 71. Write a Python program to check whether all dictionaries in a list are empty or not.
+    def check_empty_dictionary(self, testing_values):
+        return all([value == {} for value in testing_values])
+
+    def flatten_given_list(self, nested_list):
+        if isinstance(nested_list, list):
+            return [element for sublist in nested_list for element in self.flatten_given_list(sublist)]
+        else:
+            return [nested_list]
+
+    # 73. Write a Python program to remove consecutive (following each other continuously) duplicates (elements) from a given list.
+    def remove_consecutive_numbers(self):
+        return [key for key, group in groupby(self.numbers_list2)]
+
 
 list_solution = ListSolutions()
 
 
-print(list_solution.extend_list())
+print(list_solution.remove_consecutive_numbers())
+# print(list_solution.flatten_given_list(1))
+# print(list_solution.check_empty_dictionary([{},{},{}]))
+# print(list_solution.check_empty_dictionary([{1,2},{},{}]))
+# print(list_solution.starts_with_character('a'))
+# print(list_solution.starts_with_character('d'))
+# print(list_solution.remove_duplicates_sublist())
+# print(list_solution.extend_list())
 # print(list_solution.find_value_higher_specific_number(1))
 # print(list_solution.find_highest_list())
 # print(list_solution.add_zeroes_end())

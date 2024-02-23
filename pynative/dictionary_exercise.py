@@ -193,8 +193,93 @@ def multiply_items_dictionary(dict_values, multiply_value):
     return {key: value * multiply_value for key, value in dict_values.items()}
 
 
+# print(multiply_items_dictionary({'data1': 100, 'data2': -54, 'data3': 247}, 2))
 
-print(multiply_items_dictionary({'data1': 100, 'data2': -54, 'data3': 247}, 2))
+
+# 13. Write a Python program to map two lists into a dictionary.
+def combine_two_list_into_dict():
+    keys = ['red', 'green', 'blue']
+    values = ['#FF0000', '#008000', '#0000FF']
+    return {key: value for key, value in zip(keys, values)}
+
+
+# print(combine_two_list_into_dict())
+
+# 14. Write a Python program to sort a given dictionary by key.
+def sort_values_by_key():
+    color_dict = {
+        'red': '#FF0000',
+        'green': '#008000',
+        'black': '#000000',
+        'white': '#FFFFFF'
+    }
+    return dict(sorted(color_dict.items(), key=lambda color: color[0]))
+
+
+# print(sort_values_by_key())
+
+# 15. Write a Python program to get the maximum and minimum values of a dictionary.
+
+def get_max_min_values():
+    my_dict = {'x': 500, 'y': 5874, 'z': 560}
+    # sorted_values = sorted(my_dict.items(), key=lambda value: value[1])
+    # return sorted_values[0], sorted_values[-1]
+    # key_max = max(my_dict.items(), key=lambda max_value: max_value[0])
+    # key_min = min(my_dict.items(), key=lambda min_value: min_value[0]
+    key_max = max(my_dict.keys(), key=lambda max_value: my_dict[max_value])
+    key_min = min(my_dict.keys(), key=lambda min_value: my_dict[min_value])
+    return key_max, key_min
+
+# print(get_max_min_values())
+
+# 16. Write a Python program to get a dictionary from an object's fields.
+class TestClass:
+    def __init__(self, field1, field2, field3):
+        self.field1 = field1
+        self.field2 = field2
+        self.field3 = field3
+
+def get_dict_from_object_fields():
+    obj = TestClass('value1', 'value2', 'value3')
+    return vars(obj)
+
+# print(get_dict_from_object_fields())
+
+# 17. Write a Python program to remove duplicates from the dictionary.
+
+def remove_duplicates_from_dict():
+    student_data = {
+        'id1': {
+            'name': ['Sara'],
+            'class': ['V'],
+            'subject_integration': ['english, math, science']
+        },
+        'id2': {
+            'name': ['David'],
+            'class': ['V'],
+            'subject_integration': ['english, math, science']
+        },
+        'id3': {
+            'name': ['Sara'],
+            'class': ['V'],
+            'subject_integration': ['english, math, science']
+        },
+        'id4': {
+            'name': ['Surya'],
+            'class': ['V'],
+            'subject_integration': ['english, math, science']
+        }
+    }
+    result = {}
+    for key, value in student_data.items():
+        if value not in result.values():
+            result[key] = value
+
+    return result
+
+
+print(remove_duplicates_from_dict())
+
 # sample_dict_test = {1: 'one', 2: 'two', 3: 'three', 4: 'four'}
 #
 # new_value = {key: 'key is even ' if key % 2 == 0 else 'odd' for key in sample_dict_test.items()}

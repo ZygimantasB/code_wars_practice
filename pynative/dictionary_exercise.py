@@ -278,7 +278,19 @@ def remove_duplicates_from_dict():
     return result
 
 
-print(remove_duplicates_from_dict())
+# print(remove_duplicates_from_dict())
+
+
+# 18. Write a Python program to check if a dictionary is empty or not.
+def check_is_dict_empty(dict_sample):
+    # return False if  dict_sample else True
+    # return len(dict_sample) == 0
+    # return bool(dict_sample)
+    return not dict_sample
+
+
+print(check_is_dict_empty({}))
+print(check_is_dict_empty({'Hello': 1}))
 
 # sample_dict_test = {1: 'one', 2: 'two', 3: 'three', 4: 'four'}
 #

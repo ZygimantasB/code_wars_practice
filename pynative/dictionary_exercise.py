@@ -288,9 +288,33 @@ def check_is_dict_empty(dict_sample):
     # return bool(dict_sample)
     return not dict_sample
 
+# 19. Write a Python program to combine two dictionary by adding values for common keys.
 
-print(check_is_dict_empty({}))
-print(check_is_dict_empty({'Hello': 1}))
+def combine_dictionaries():
+    d1 = {'a': 100, 'b': 200, 'c':300}
+    d2 = {'a': 300, 'b': 200, 'd':400}
+    # d1.update(d2)
+    # return d1
+    for key, value in d2.items():
+        if key in d1.items():
+            d1[key] += value
+        else:
+            d1[key] = value
+    return d1
+
+
+# print(combine_dictionaries())
+
+# 20. Write a Python program to print all distinct values in a dictionary.
+
+def print_distinct_values():
+    sample_data =  [{"V":"S001"}, {"V": "S002"}, {"VI": "S001"}, {"VI": "S005"}, {"VII":"S005"}, {"V":"S009"},{"VIII":"S007"}]
+    return {key: value for key, value in sample_data}
+
+print(print_distinct_values())
+
+# print(check_is_dict_empty({}))
+# print(check_is_dict_empty({'Hello': 1}))
 
 # sample_dict_test = {1: 'one', 2: 'two', 3: 'three', 4: 'four'}
 #

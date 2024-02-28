@@ -309,9 +309,17 @@ def combine_dictionaries():
 
 def print_distinct_values():
     sample_data =  [{"V":"S001"}, {"V": "S002"}, {"VI": "S001"}, {"VI": "S005"}, {"VII":"S005"}, {"V":"S009"},{"VIII":"S007"}]
-    return {key: value for key, value in sample_data}
+    # distinct_values = set(val for dic in sample_data for val in dic.values())
+    unique_values = set(value for subdict in sample_data for value in subdict.values())
+
+    return unique_values
+
 
 print(print_distinct_values())
+
+# 22. Write a Python program to find the highest 3 values of corresponding keys in a dictionary.
+
+
 
 # print(check_is_dict_empty({}))
 # print(check_is_dict_empty({'Hello': 1}))

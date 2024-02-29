@@ -315,11 +315,64 @@ def print_distinct_values():
     return unique_values
 
 
-print(print_distinct_values())
-
+# print(print_distinct_values())
+#
 # 22. Write a Python program to find the highest 3 values of corresponding keys in a dictionary.
+def find_3_highest_values():
+    my_dict = {'a': 500, 'b': 5874, 'c': 560, 'd': 400, 'e': 5874, 'f': 20}
+    return sorted(my_dict.values())[-3:]
+
+# print(find_3_highest_values())
+
+# 23. Write a Python program to combine values in a list of dictionaries.
+def combine_values():
+    item_list = [{'item': 'item1', 'amount': 400}, {'item': 'item2', 'amount': 300}, {'item': 'item1', 'amount': 750}]
+    result = {}
+    for d in item_list:
+        if d['item'] in result:
+            result[d['item']] += d['amount']
+        else:
+            result[d['item']] = d['amount']
+    return result
+
+# print(combine_values())
+
+# 24. Write a Python program to create a dictionary from a string.
+
+def count_letters():
+    sample_string = 'w3resource'
+    # return {char: sample_string.count(char) for char in sample_string}
+    result = {}
+    for char in sample_string:
+        if char in result:
+            result[char] += 1
+        else:
+            result[char] = 1
+    return result
+
+# print(count_letters())
 
 
+# 26. Write a Python program to count the values associated with a key in a dictionary.
+def count_values_associated_keys():
+    student = [{'id': 1, 'success': True, 'name': 'Lary'},
+               {'id': 2, 'success': False, 'name': 'Rabi'},
+               {'id': 3, 'success': True, 'name': 'Alex'}]
+    return sum(d['id'] for d in student), sum(d['success'] for d in student)
+
+
+# print(count_values_associated_keys())
+
+# 27. Write a Python program to convert a list into a nested dictionary of keys.
+def dict_to_nested_list():
+    number_list = [1, 2, 3, 4]
+    nested_dict = {}
+    for number in reversed(number_list):
+        nested_dict = {number: nested_dict}
+    return nested_dict
+
+
+print(dict_to_nested_list())
 
 # print(check_is_dict_empty({}))
 # print(check_is_dict_empty({'Hello': 1}))

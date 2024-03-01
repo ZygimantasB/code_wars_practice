@@ -1,0 +1,17 @@
+{
+    "January": {
+        "1": "Naughty",
+        "2": "Naughty",
+        "31": "Nice"
+    },
+    "February": {
+        "1": "Nice",
+        "2": "Naughty",
+        "28": "Nice"
+    },
+    "December": {
+        "1": "Nice",
+        "2": "Nice",
+        "31": "Naughty"
+    }
+}

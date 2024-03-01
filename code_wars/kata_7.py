@@ -266,4 +266,14 @@ def pofi(n):
     return ['1','i','-1','-i'][n%4]
 
 
-print(pofi(12))
+# print(pofi(12))
+
+def square_up(n):
+    result = []
+    for i in range(1, n + 1):
+        result.extend([0] * (n - i) + list(range(i, 0, -1)))
+    return result
+
+print(square_up(3))
+print(square_up(2))
+print(square_up(4))

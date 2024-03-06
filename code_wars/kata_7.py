@@ -274,6 +274,48 @@ def square_up(n):
         result.extend([0] * (n - i) + list(range(i, 0, -1)))
     return result
 
-print(square_up(3))
-print(square_up(2))
-print(square_up(4))
+# print(square_up(3))
+# print(square_up(2))
+# print(square_up(4))
+
+def is_it_letter(s):
+    return s.isalpha()
+
+
+# print(is_it_letter('a'))
+# print(is_it_letter('A'))
+# print(is_it_letter('!'))
+# print(is_it_letter('1'))
+
+def add(a, b):
+    return a + b
+
+def multiply(a, b):
+    return a * b
+
+def divide(a, b):
+    return a / b
+
+def mod(a, b):
+    return a % b
+
+def exponent(a, b):
+    return a ** b
+
+def subt(a, b):
+    return a - b
+
+def points(games):
+    points = 0
+    for game in games:
+        x, y = map(int, game.split(':'))
+        if x > y:
+            points += x
+        elif x == y:
+            points += 1
+    return points
+
+
+print(points(['1:0','2:0','3:0','4:0','2:1','3:1','4:1','3:2','4:2','4:3']))
+print(points(['1:1','2:2','3:3','4:4','2:2','3:3','4:4','3:3','4:4','4:4']))
+print(points(['1:1','2:2','3:3','4:4','2:2','3:3','4:4','3:3','4:4','4:4']))

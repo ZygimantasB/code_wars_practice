@@ -439,11 +439,17 @@ class ListSolutions:
     def remove_consecutive_numbers(self):
         return [key for key, group in groupby(self.numbers_list2)]
 
+    # 74. Write a Python program to pack consecutive duplicates of a given list of elements into sublists.
+    def pack_consecutive_duplicates(self):
+        return [list(group) for key, group in groupby(self.numbers_list2)]
+
 
 list_solution = ListSolutions()
 
+print(list(groupby([1, 2, 3])))
 
-print(list_solution.remove_consecutive_numbers())
+print(list_solution.pack_consecutive_duplicates())
+# print(list_solution.remove_consecutive_numbers())
 # print(list_solution.flatten_given_list(1))
 # print(list_solution.check_empty_dictionary([{},{},{}]))
 # print(list_solution.check_empty_dictionary([{1,2},{},{}]))

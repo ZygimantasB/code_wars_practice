@@ -206,3 +206,24 @@ def corrections(x):
         return str(x) + " is more than zero."
     else:
         return str(x) + " is equal to or less than zero."
+
+
+import sys
+def total_bytes(obj):
+    return sys.getsizeof(obj)
+
+
+# print(total_bytes('hello'))
+
+def pillars(num_pill, dist, width):
+    if num_pill <= 0:
+        return False
+    else:
+        distance_between_cm = dist * 100
+        total_distance = (num_pill - 1) * distance_between_cm
+        total_distance -= width * (num_pill - 2)
+        return total_distance
+
+print(pillars(3, 20, 25))
+print(pillars(1, 10, 10))
+

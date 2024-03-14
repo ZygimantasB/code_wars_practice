@@ -1,9 +1,8 @@
 # 1. Write a Python program to sum all the items in a list.
 import ast
 import itertools
-from random import shuffle, choice
 from itertools import groupby
-
+from random import shuffle, choice
 
 
 class ListSolutions:
@@ -325,7 +324,6 @@ class ListSolutions:
         return first_sec_list, sec_first_list
 
     # 53. Write a Python program to create a list with infinite elements.
-    import itertools
     def create_infinite_list(self):
         c = itertools.count()
         print(next(c))
@@ -343,8 +341,6 @@ class ListSolutions:
         return [{key: value for key, value in elements.items() if key != 'key1'} for elements in self.original_list]
 
     # 56. Write a Python program to convert a string to a list.
-
-    import ast
 
     def convert_string_list(self):
         # return eval(self.color_string)
@@ -443,12 +439,46 @@ class ListSolutions:
     def pack_consecutive_duplicates(self):
         return [list(group) for key, group in groupby(self.numbers_list2)]
 
+    # 75. Write a Python program to create a list reflecting the run-length encoding from a given list of integers or a given list of characters.
+    def run_length_encoding(self, input_list):
+        return [[len(list(group)), key] for key, group in groupby(input_list)]
+
+    # 76. Write a Python program to create a list reflecting the modified run-length encoding from a given list of integers or a given list of characters.
+    def modified_run_length_encoding(self, input_list):
+        return [[len(list(group)), key] if len(list(group)) > 1 else key for key, group in groupby(input_list)]
+
+    # 77. Write a Python program to decode a run-length message.
+    def decode_run_len_message(self, input_list):
+        decoded_list = []
+        for item in input_list:
+            if isinstance(item, list):
+                decoded_list.extend([item[1]] * item[0])
+            else:
+                decoded_list.append(item)
+        return decoded_list
+
+
+    # 78. Write a Python program to split a given list into two parts where the length of the first part of the list is given.
+    def split_list_two_parts(self, input_list, list_len):
+        return [input_list[:list_len], input_list[list_len:]]
+
+    def remove_nth_element(self, input_list, element):
+        # input_list.remove(element)
+        # return input_list
+        return input_list[:element - 1] + input_list[element:]
+
 
 list_solution = ListSolutions()
 
-print(list(groupby([1, 2, 3])))
-
-print(list_solution.pack_consecutive_duplicates())
+print(list_solution.remove_nth_element([1, 1, 2, 3, 4, 4, 5, 1], 3))
+# print(list_solution.split_list_two_parts([1, 1, 2, 3, 4, 4, 5, 1], 3))
+# print(list_solution.decode_run_len_message([[2, 1], 2, 3, [2, 4], 5, 1]))
+# print(list_solution.modified_run_length_encoding([1, 1, 2, 3, 4, 4, 5, 1]))
+# print(list_solution.modified_run_length_encoding('aabcddddadnss'))
+# print(list_solution.run_length_encoding([1, 1, 2, 3, 4, 4.3, 5, 1]))
+# print(list_solution.run_length_encoding('automatically'))
+# print(list(groupby([1, 2, 3])))
+# print(list_solution.pack_consecutive_duplicates())
 # print(list_solution.remove_consecutive_numbers())
 # print(list_solution.flatten_given_list(1))
 # print(list_solution.check_empty_dictionary([{},{},{}]))

@@ -24,3 +24,10 @@ data = [
 grouped_dats = groupby(data, key=lambda value: value['age'])
 for key, group in grouped_dats:
     print(key, list(group))
+
+def group_strings(input_string):
+    return [[len(list(group)), key] for key, group in groupby(input_string)]
+
+
+print(group_strings('automatically'))
+print(group_strings('hello world'))

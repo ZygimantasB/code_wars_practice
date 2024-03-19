@@ -1,8 +1,8 @@
 # 1. Write a Python program to sum all the items in a list.
 import ast
 import itertools
-from itertools import groupby
-from random import shuffle, choice
+from itertools import groupby, combinations
+from random import shuffle, choice, sample
 
 
 class ListSolutions:
@@ -462,15 +462,68 @@ class ListSolutions:
     def split_list_two_parts(self, input_list, list_len):
         return [input_list[:list_len], input_list[list_len:]]
 
+    # 79. Write a Python program to remove the K'th element from a given list, and print the updated list.
     def remove_nth_element(self, input_list, element):
         # input_list.remove(element)
         # return input_list
         return input_list[:element - 1] + input_list[element:]
+    # 80. Write a Python program to insert an element at a specified position into a given list.
+    def insert_element_nth_position(self, number_list, element, position):
+        if position > len(number_list):
+            raise IndexError('Position out of range')
+        return number_list[:position] + [element] + number_list[position:]
+
+    # 81. Write a Python program to extract a given number of randomly selected elements from a given list.
+    def extract_random_numbers(self, numbers_list):
+        # return sample(numbers_list, 3)
+        return [choice(numbers_list) for _ in range(3)]
+
+    # 82. Write a Python program to generate combinations of n distinct objects taken from the elements of a given list.
+    def generate_combinations(self, input_list, n, current_combination=[]):
+        # return list(combinations(numbers_list, n))
+        if n == 0:
+            yield current_combination
+        else:
+            for i in range(len(input_list)):
+                yield from self.generate_combinations(input_list[i+1:], n-1, current_combination + [input_list[i]])
+
+    # 83. Write a Python program to round every number in a given list of numbers and print the total sum multiplied by the length of the list.
+    def round_numbers_sum_multi(self, numbers_list):
+        round_number = sum([round(number) for number in numbers_list])
+        return round_number * len(numbers_list)
+
+    # 84. Write a Python program to round the numbers in a given list, print the minimum and maximum numbers and multiply the numbers by 5.
+    def round_numbers_task(self, numbers_list):
+        # round_numbers = [round(number) for number in numbers_list]
+        round_numbers = list(map(round, numbers_list))
+        min_number = min(round_numbers)
+        max_number = max(round_numbers)
+        multiply_numbers = sorted(set([number * 5 for number in round_numbers]))
+        return f'Minimum value: {min_number} Maximum value: {max_number} Result {multiply_numbers}'
+
+    # 85. Write a Python program to create a multidimensional list (lists of lists) with zeros.
+    def create_multidimensional_list(self, rows, cols):
+        return [[0 for _ in range(cols) for _ in range(rows)]]
+
+    # 86. Write a Python program to create a 3X3 grid with numbers.
+    def create_3_x_3grid(self):
+        return [[i for i in range(1, 4)] for _ in range(3)]
+
+    # 87. Write a Python program to read a matrix from the console and print the sum for each column. As input from the user, accept matrix rows, columns, and elements separated by a space (each row).
 
 
 list_solution = ListSolutions()
 
-print(list_solution.remove_nth_element([1, 1, 2, 3, 4, 4, 5, 1], 3))
+print(list_solution.create_3_x_3grid())
+# print(list_solution.create_multidimensional_list(6, 2))
+# print(list_solution.round_numbers_task([22.4, 4.0, 16.22, 9.1, 11.0, 12.22, 14.2, 5.2, 17.5]))
+# print(list_solution.round_numbers_sum_multi([22.4, 4.0, -16.22, -9.1, 11.0, -12.22, 14.2, -5.2, 17.5]))
+# print(list(list_solution.generate_combinations([1, 2, 3, 4, 5, 6, 7, 8, 9], 2)))
+# print(list_solution.generate_combinations([1, 2, 3, 4, 5, 6, 7, 8, 9], 2))
+# print(list_solution.extract_random_numbers([1, 1, 2, 3, 4, 4, 5, 1]))
+# print(list_solution.insert_element_nth_position([1, 1, 2, 3, 4, 4, 5, 1], 12, 2))
+# print(list_solution.insert_element_nth_position([1, 1, 2, 3, 4, 4, 5, 1], 12, 20))
+# print(list_solution.remove_nth_element([1, 1, 2, 3, 4, 4, 5, 1], 3))
 # print(list_solution.split_list_two_parts([1, 1, 2, 3, 4, 4, 5, 1], 3))
 # print(list_solution.decode_run_len_message([[2, 1], 2, 3, [2, 4], 5, 1]))
 # print(list_solution.modified_run_length_encoding([1, 1, 2, 3, 4, 4, 5, 1]))

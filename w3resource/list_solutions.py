@@ -510,11 +510,38 @@ class ListSolutions:
         return [[i for i in range(1, 4)] for _ in range(3)]
 
     # 87. Write a Python program to read a matrix from the console and print the sum for each column. As input from the user, accept matrix rows, columns, and elements separated by a space (each row).
+    def sum_matrix_columns(self, rows, columns):
+        matrix = []
+
+        for i in range(rows):
+            row = list(map(int, input('Enter the element for row ' + str(i + 1))))
+            matrix.append(row)
+
+        for j in range(columns):
+            column_sum = sum(row[j] for row in matrix)
+            return f'Sum for column ' + str(j + 1) + ": " + str(column_sum)
+
+    # 88. Write a Python program to read a square matrix from the console and print the sum of the matrix's primary diagonal. Accept the size of the square matrix and elements for each column separated with a space (for every row) as input from the user.
+    def sum_matrix_diagonal(self, size):
+        matrix = []
+
+        for i in range(size):
+            row = list(map(int, input("Enter the elements for row " + str(i + 1) + ": ").split()))
+            matrix.append(row)
+
+        # Calculate and print the sum of the primary diagonal
+        diagonal_sum = sum(matrix[i][i] for i in range(size))
+        return "Sum of matrix primary diagonal: " + str(diagonal_sum)
+    # 89. Write a Python program to Zip two given lists of lists.
+    def zip_two_given_lists(self, number_list1):
 
 
 list_solution = ListSolutions()
 
-print(list_solution.create_3_x_3grid())
+
+print(list_solution.sum_matrix_diagonal(5))
+# print(list_solution.sum_matrix_columns(2, 2))
+# print(list_solution.create_3_x_3grid())
 # print(list_solution.create_multidimensional_list(6, 2))
 # print(list_solution.round_numbers_task([22.4, 4.0, 16.22, 9.1, 11.0, 12.22, 14.2, 5.2, 17.5]))
 # print(list_solution.round_numbers_sum_multi([22.4, 4.0, -16.22, -9.1, 11.0, -12.22, 14.2, -5.2, 17.5]))

@@ -533,13 +533,37 @@ class ListSolutions:
         diagonal_sum = sum(matrix[i][i] for i in range(size))
         return "Sum of matrix primary diagonal: " + str(diagonal_sum)
     # 89. Write a Python program to Zip two given lists of lists.
-    def zip_two_given_lists(self, number_list1):
+    def zip_two_given_lists(self, number_list1, number_list2):
+        # return[(a + b) for a, b in zip(number_list1, number_list2)]
+        return list(map(list.__add__, number_list1, number_list2))
 
+    # 90. Write a Python program to count the number of lists in a given list of lists.
+    def count_sublist(self, numbers_list):
+        # result = 0
+        # for number in numbers_list:
+        #     if isinstance(number, list):
+        #         result += 1
+        # return result
+        # return sum([1 for number in numbers_list if isinstance(number, list)])
+        # return len([number for number in numbers_list if isinstance(number, list)])
+        return sum(isinstance(number, list) for number in numbers_list)
+
+    # 91. Write a Python program to find a list with maximum and minimum lengths.
+    def find_list_max_min_len(self, numbers_list):
+        max_len_list = max(numbers_list, key=len)
+        max_len = max(len(x) for x in numbers_list)
+        min_len_list = min(numbers_list, key=len)
+        min_len = min(len(x) for x in numbers_list)
+        return max_len, max_len_list, min_len, min_len_list
 
 list_solution = ListSolutions()
 
 
-print(list_solution.sum_matrix_diagonal(5))
+print(list_solution.find_list_max_min_len([[0], [1, 3], [5, 7], [9, 11], [13, 15, 17]]))
+# print(list_solution.count_sublist([[1, 3], [5, 7], [9, 11], [13, 15, 17]]))
+# print(list_solution.count_sublist([[2, 4], [[6, 8], [4, 5, 8]], [10, 12, 14]]))
+# print(list_solution.zip_two_given_lists([[1, 3], [5, 7], [9, 11]], [[2, 4], [6, 8], [10, 12, 14]]))
+# print(list_solution.sum_matrix_diagonal(5))
 # print(list_solution.sum_matrix_columns(2, 2))
 # print(list_solution.create_3_x_3grid())
 # print(list_solution.create_multidimensional_list(6, 2))

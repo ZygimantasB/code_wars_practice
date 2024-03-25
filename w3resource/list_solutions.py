@@ -556,10 +556,35 @@ class ListSolutions:
         min_len = min(len(x) for x in numbers_list)
         return max_len, max_len_list, min_len, min_len_list
 
+    # 92. Write a Python program to check if a nested list is a subset of another nested list.
+    def check_if_nested_subset(self, numbers_list1, numbers_list2):
+        # return [number in numbers_list1 for number in numbers_list2]
+        return all(map(numbers_list1.__contains__, numbers_list2))
+
+    # 93. Write a Python program to count the number of sublists that contain a particular element.
+    def count_numbers_in_list(self, numbers_list, contain_number):
+        return sum([1 for sublist in numbers_list if contain_number in sublist])
+
+
+    # 94. Write a Python program to count the number of unique sublists within a given list.
+    def count_numbers_list(self, number_list):
+        # return {tuple(number): number_list.count(number) for number in number_list}
+        result = {}
+        for number in number_list:
+            result.setdefault(tuple(number), list()).append(1)
+        for a, b in result.items():
+            result[a] = sum(b)
+        return result
+
+
 list_solution = ListSolutions()
 
-
-print(list_solution.find_list_max_min_len([[0], [1, 3], [5, 7], [9, 11], [13, 15, 17]]))
+print(list_solution.count_numbers_list([[1, 3], [5, 7], [1, 3], [13, 15, 17], [5, 7], [9, 11]]))
+# print(list_solution.count_numbers_in_list([['A', 'B'], ['A', 'C'], ['A', 'D', 'E'], ['B', 'C', 'D']],  'A'))
+# print(list_solution.count_numbers_in_list([[1, 3], [5, 7], [1, 11], [1, 15, 7]], 7))
+# print(list_solution.count_numbers_in_list([[1, 3], [5, 7], [1, 11], [1, 15, 7]], 1))
+# print(list_solution.check_if_nested_subset([[1, 3], [5, 7], [9, 11], [13, 15, 17]], [[1, 3], [13, 15, 17]]))
+# print(list_solution.find_list_max_min_len([[0], [1, 3], [5, 7], [9, 11], [13, 15, 17]]))
 # print(list_solution.count_sublist([[1, 3], [5, 7], [9, 11], [13, 15, 17]]))
 # print(list_solution.count_sublist([[2, 4], [[6, 8], [4, 5, 8]], [10, 12, 14]]))
 # print(list_solution.zip_two_given_lists([[1, 3], [5, 7], [9, 11]], [[2, 4], [6, 8], [10, 12, 14]]))

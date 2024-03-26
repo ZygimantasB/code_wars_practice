@@ -565,7 +565,6 @@ class ListSolutions:
     def count_numbers_in_list(self, numbers_list, contain_number):
         return sum([1 for sublist in numbers_list if contain_number in sublist])
 
-
     # 94. Write a Python program to count the number of unique sublists within a given list.
     def count_numbers_list(self, number_list):
         # return {tuple(number): number_list.count(number) for number in number_list}
@@ -575,11 +574,39 @@ class ListSolutions:
         for a, b in result.items():
             result[a] = sum(b)
         return result
+    # 95. Write a Python program to sort each sublist of strings in a given list of lists.
+    def sort_sublist(self, my_list):
+        # return sorted(my_list, key=lambda number: number[0])
+        return [sorted(sublsit) for sublsit in my_list]
+
+    # 96. Write a Python program to sort a given list of lists by length and value.
+    def sort_list_by_len(self, my_list):
+        return sorted(sorted(my_list), key=len)
+
+    # 97. Write a Python program to remove sublists from a given list of lists that contain an element outside a given range.
+    def remove_sublist_given_range(self, input_list, range_start, range_end):
+        return [sublist for sublist in input_list if all(range_start <= element <= range_end for element in sublist)]
+
+    # 98. Write a Python program to scramble the letters of a string in a given list.
+    def scramble_letters(self, input_list):
+        scrambled_list = []
+        for word in input_list:
+            word = list(word)
+            shuffle(word)
+            scrambled_list.append(''.join(word))
+        return scrambled_list
+
 
 
 list_solution = ListSolutions()
 
-print(list_solution.count_numbers_list([[1, 3], [5, 7], [1, 3], [13, 15, 17], [5, 7], [9, 11]]))
+
+print(list_solution.scramble_letters(['Python', 'list', 'exercises', 'practice', 'solution']))
+# print(list_solution.remove_sublist_given_range([[2], [0], [1, 2, 3], [0, 1, 2, 3, 6, 7], [9, 11], [13, 14, 15, 17]],
+#                                                2, 4))
+# print(list_solution.sort_list_by_len([[2], [0], [1, 3], [0, 7], [9, 11], [13, 15, 17]]))
+# print(list_solution.sort_sublist([[2], [0], [1, 3], [0, 7], [9, 11], [13, 15, 17]]))
+# print(list_solution.count_numbers_list([[1, 3], [5, 7], [1, 3], [13, 15, 17], [5, 7], [9, 11]]))
 # print(list_solution.count_numbers_in_list([['A', 'B'], ['A', 'C'], ['A', 'D', 'E'], ['B', 'C', 'D']],  'A'))
 # print(list_solution.count_numbers_in_list([[1, 3], [5, 7], [1, 11], [1, 15, 7]], 7))
 # print(list_solution.count_numbers_in_list([[1, 3], [5, 7], [1, 11], [1, 15, 7]], 1))

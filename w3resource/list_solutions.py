@@ -596,12 +596,46 @@ class ListSolutions:
             scrambled_list.append(''.join(word))
         return scrambled_list
 
+    # 99. Write a Python program to find the maximum and minimum values in a given heterogeneous list.
+    def find_max_min_values(self, input_list):
+        max_number = max([number for number in input_list if isinstance(number, int)])
+        min_number = min([number for number in input_list if isinstance(number, int)])
+        return max_number, min_number
+
+    # 100. Write a Python program to extract common index elements from more than one given list.
+    def extract_common_elements(self, *args):
+        # result = []
+        # for m, n, o in zip(*args):
+        #     if m == n == o:
+        #         result.append(m)
+        # return result
+        # return [elements for elements in zip(*args) if len(set(elements)) == 1]
+        return [m for m, n, o in zip(*args) if m == n == o]
+
+    # 101. Write a Python program to sort a given matrix in ascending order according to the sum of its rows.
+    def sort_matrix(self, matrix):
+        sorted_matrix = sorted(matrix, key=sum)
+        return sorted_matrix
+    # 102. Write a Python program to extract specified size of strings from a give list of string values.
+    def extract_word_by_len(self, input_list, word_len):
+        result = []
+        for word in input_list:
+            if len(word) == word_len:
+                result.append(word)
+        return result
+
+    # 103. Write a Python program to extract specified number of elements from a given list, which
+
 
 
 list_solution = ListSolutions()
 
-
-print(list_solution.scramble_letters(['Python', 'list', 'exercises', 'practice', 'solution']))
+print(list_solution.extract_word_by_len(['Python', 'list', 'exercises', 'practice', 'solution'], 8))
+# print(list_solution.sort_matrix([[1, 2, 3], [-2, 4, -5], [1, -1, 1]]))
+# print(list_solution.sort_matrix([[1, 2, 3], [2, 4, 5], [1, 1, 1]]))
+# print(list_solution.extract_common_elements([1, 1, 3, 4, 5, 6, 7], [0, 1, 2, 3, 4, 5, 7], [0, 1, 2, 3, 4, 5, 7]))
+# print(list_solution.find_max_min_values(['Python', 3, 2, 4, 5, 'version']))
+# print(list_solution.scramble_letters(['Python', 'list', 'exercises', 'practice', 'solution']))
 # print(list_solution.remove_sublist_given_range([[2], [0], [1, 2, 3], [0, 1, 2, 3, 6, 7], [9, 11], [13, 14, 15, 17]],
 #                                                2, 4))
 # print(list_solution.sort_list_by_len([[2], [0], [1, 3], [0, 7], [9, 11], [13, 15, 17]]))

@@ -625,12 +625,50 @@ class ListSolutions:
         return result
 
     # 103. Write a Python program to extract specified number of elements from a given list, which
+    def extract_continuously_elements(self, input_list, number_len):
+        # return [key for key, group in groupby(input_list) if (len(list(group)) == number_len)]
+        return [key for key, group in groupby(input_list) if (len(list(group)) == number_len)]
 
+    # 104. Write a Python program to find the difference between consecutive numbers in a given list.
+    def find_difference(self, input_list):
+        return [element - index for index, element in zip(input_list[:-1], input_list[1:])]
 
+    # 105. Write a Python program to compute average of two given lists.
+    def compute_avg_two_lists(self, input_list1, input_list2):
+        # first_list = sum(input_list1) / len(input_list1)
+        # second_list = sum(input_list2) / len(input_list2)
+        # result = (first_list + second_list) / 2
+        # return result
+        combined_lists = input_list1 + input_list2
+        result = sum(combined_lists) / len(combined_lists)
+        return result
+
+    # 106. Write a Python program to count integers in a given mixed list.
+    def count_integers_in_list(self, input_list):
+        return sum([1 for value in input_list if isinstance(value, int)])
+
+    # 107. Write a Python program to remove a specified column from a given nested list.
+    def remove_specific_column(self, input_list, column_index):
+        return [sublist[:column_index] + sublist[column_index:] for sublist in input_list]
+
+    # 108. Write a Python program to extract a specified column from a given nested list.
+    def extract_specific_column(self, nested_list, column_index):
+        # return [sublist for index, sublist in enumerate(nested_list) if remove_index == index]
+        return [sublist[column_index] for sublist in nested_list]
 
 list_solution = ListSolutions()
 
-print(list_solution.extract_word_by_len(['Python', 'list', 'exercises', 'practice', 'solution'], 8))
+print(list_solution.extract_specific_column([[1, 2, 3], [2, 4, 5], [1, 1, 1]], 1))
+print(list_solution.extract_specific_column([[1, 2, 3], [2, 4, 5], [1, 1, 1]], 2))
+# print(list_solution.extract_specific_column([[1, 2, 3], [2, 4, 5], [1, 1, 1]]))
+# print(list_solution.remove_specific_column([[1, 2, 3], [-2, 4, -5], [1, -1, 1]], 3))
+# print(list_solution.remove_specific_column([[1, 2, 3], [2, 4, 5], [1, 1, 1]], 1))
+# print(list_solution.count_integers_in_list([1, 'abcd', 3, 1.2, 4, 'xyz', 5, 'pqr', 7, -5, -12.22]))
+# print(list_solution.compute_avg_two_lists([1, 1, 3, 4, 4, 5, 6, 7], [0, 1, 2, 3, 4, 4, 5, 7, 8]))
+# print(list_solution.find_difference([1, 1, 3, 4, 4, 5, 6, 7]))
+# print(list_solution.extract_continuously_elements([0, 1, 2, 3, 4, 4, 4, 4, 5, 7], 4))
+# print(list_solution.extract_continuously_elements([1, 1, 3, 4, 4, 5, 6, 7], 2))
+# print(list_solution.extract_word_by_len(['Python', 'list', 'exercises', 'practice', 'solution'], 8))
 # print(list_solution.sort_matrix([[1, 2, 3], [-2, 4, -5], [1, -1, 1]]))
 # print(list_solution.sort_matrix([[1, 2, 3], [2, 4, 5], [1, 1, 1]]))
 # print(list_solution.extract_common_elements([1, 1, 3, 4, 5, 6, 7], [0, 1, 2, 3, 4, 5, 7], [0, 1, 2, 3, 4, 5, 7]))

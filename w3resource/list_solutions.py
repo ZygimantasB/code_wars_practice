@@ -3,6 +3,7 @@ import ast
 import itertools
 from itertools import groupby, combinations
 from random import shuffle, choice, sample
+from collections import Counter
 
 
 class ListSolutions:
@@ -656,10 +657,46 @@ class ListSolutions:
         # return [sublist for index, sublist in enumerate(nested_list) if remove_index == index]
         return [sublist[column_index] for sublist in nested_list]
 
+    # 109. Write a Python program to rotate a given list by a specified number of items in the right or left direction.
+    def rotate_numbers_list(self, input_list, rotate_number):
+        return input_list[rotate_number:] + input_list[:rotate_number +1]
+
+    # 110. Write a Python program to find the item with the most occurrences in a given list.
+    def find_max_occurrences_number(self, input_list):
+        # return {number: input_list.count(number) for number in input_list}
+        counter = Counter(input_list)
+        most_common_elements, _ = counter.most_common(1)[0]
+        return most_common_elements
+
+    # 111. Write a Python program to access multiple elements at a specified index from a given list.
+    def access_specific_element(self, input_list, indexes):
+        return [input_list[index] for index in indexes]
+
+    # 112. Write a Python program to check whether a specified list is sorted or not.
+    def check_list_sorted(self, input_list):
+        return input_list == sorted(input_list)
+
+    # 113. Write a Python program to remove duplicate dictionary entries from a given list.
+    def remove_duplicated_values(self, list_color):
+        # result = []
+        # for color in input_list:
+        #     if color not in result:
+        #         result.append(color)
+        #     else:
+        #         continue
+        # return result
+        return [dict(e) for e in {tuple(d.items()) for d in list_color}]
+
 list_solution = ListSolutions()
 
-print(list_solution.extract_specific_column([[1, 2, 3], [2, 4, 5], [1, 1, 1]], 1))
-print(list_solution.extract_specific_column([[1, 2, 3], [2, 4, 5], [1, 1, 1]], 2))
+print(list_solution.remove_duplicated_values([{'Green': '#008000'}, {'Black': '#000000'}, {'Blue': '#0000FF'}, {'Green': '#008000'}]))
+# print(list_solution.check_list_sorted([1, 2, 4, 6, 8, 10, 12, 14, 16, 17]))
+# print(list_solution.check_list_sorted([1, 4, 2, 6, 8, 10, 12, 14, 16, 17]))
+# print(list_solution.access_specific_element([2, 3, 8, 4, 7, 9, 8, 2, 6, 5, 1, 6, 1, 2, 3, 4, 6, 9, 1, 2], [0, 3, 5, 7, 10]))
+# print(list_solution.find_max_occurrences_number([2, 3, 8, 4, 7, 9, 8, 2, 6, 5, 1, 6, 1, 2, 3, 4, 6, 9, 1, 2]))
+# print(list_solution.rotate_numbers_list([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 3))
+# print(list_solution.extract_specific_column([[1, 2, 3], [2, 4, 5], [1, 1, 1]], 1))
+# print(list_solution.extract_specific_column([[1, 2, 3], [2, 4, 5], [1, 1, 1]], 2))
 # print(list_solution.extract_specific_column([[1, 2, 3], [2, 4, 5], [1, 1, 1]]))
 # print(list_solution.remove_specific_column([[1, 2, 3], [-2, 4, -5], [1, -1, 1]], 3))
 # print(list_solution.remove_specific_column([[1, 2, 3], [2, 4, 5], [1, 1, 1]], 1))

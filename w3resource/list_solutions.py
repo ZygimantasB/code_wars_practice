@@ -743,11 +743,23 @@ class ListSolutions:
             common_elements.intersection_update(sublist)
         return list(common_elements)
 
+    # 123. Write a Python program to reverse strings in a given list of string values.
+    def reverse_string(self, input_list):
+        return [word[::-1] for word in input_list]
+
+    # 124. Write a Python program to find the maximum and minimum product of pairs of tuples within a given list.
+    def write_pairs_product(self, input_list):
+        result_max = max([abs(x * y) for x, y in input_list])
+        result_min = min([abs(x * y) for x, y in input_list])
+        return result_max, result_min
+
 
 list_solution = ListSolutions()
 
-
-print(list_solution.find_common_elements([[12, 18, 23, 25, 45], [7, 12, 18, 24, 28], [1, 5, 8, 12, 15, 16, 18]]))
+print(list_solution.write_pairs_product([(2, 7), (2, 6), (1, 8), (4, 9)]))
+# print(list_solution.reverse_string([(2, 7), (2, 6), (1, 8), (4, 9)]))
+# print(list_solution.reverse_string(['Red', 'Green', 'Blue', 'White', 'Black']))
+# print(list_solution.find_common_elements([[12, 18, 23, 25, 45], [7, 12, 18, 24, 28], [1, 5, 8, 12, 15, 16, 18]]))
 # print(list_solution.find_nested_elements([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], [[12, 18, 23, 25, 45], [7, 11, 19, 24, 28], [1, 5, 8, 18, 15, 16]]))
 # print(list_solution.create_alternative_list(['red', 'black', 'white', 'green', 'orange']))
 # print(list_solution.is_substring(['red', 'black', 'white', 'green', 'orange'], 'ack'))

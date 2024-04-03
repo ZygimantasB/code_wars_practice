@@ -4,6 +4,8 @@ import itertools
 from itertools import groupby, combinations
 from random import shuffle, choice, sample
 from collections import Counter
+from operator import itemgetter
+from numpy import diff
 
 
 class ListSolutions:
@@ -687,9 +689,79 @@ class ListSolutions:
         # return result
         return [dict(e) for e in {tuple(d.items()) for d in list_color}]
 
+    # 114. Write a Python program to extract the nth element from a given list of tuples.
+    def extract_nth_elements(self, input_list, index):
+        # return list(map(lambda value: value[index], input_list))
+        return [value[index] for value in input_list]
+
+    # 115. Write a Python program to check if the elements of a given list are unique or not.
+    def is_element_unique(self, input_list):
+        # return sorted(set(input_list)) == input_list
+        return all(input_list.count(element) == 1 for element in input_list)
+
+    # 116. Write a Python program to sort a list of lists by a given index of the inner list.
+    def sort_list_by_index(self, input_list, index):
+        # return list(map(lambda value: value[index], input_list))
+        # return sorted(input_list, key=lambda value: value[index])
+        return sorted(input_list, key=itemgetter(index))
+
+    # 117. Write a Python program to remove all elements from a given list that are present in another list.
+    def remove_elements_from_list(self, input_list1, input_list2):
+        # result = []
+        # for number in input_list1:
+        #     if number in input_list2:
+        #         continue
+        #     else:
+        #         result.append(number)
+        # return result
+        # return [number for number in input_list1 if number not in input_list2]
+        return list(filter(lambda number: number not in input_list2, input_list1))
+
+    # 118. Write a Python program to find the difference between elements (n+1th - nth) of a given list of numeric values.
+    def difference_between_elements(self, input_list):
+        # return [second - first for first, second in zip(input_list[:-1], input_list[1:])]
+        return list(diff(input_list))
+
+    # 119. Write a Python program to check if a substring appears in a given list of string values.
+    def is_substring(self, input_list, substring):
+        # return any([substring for substring in input_list])
+        return any(filter(lambda value: substring in value, input_list))
+
+    # 120. Write a Python program to create a list taking alternate elements from a given list.
+    def create_alternative_list(self, input_list):
+        # return [word for word in input_list[::2]]
+        return list(filter(lambda word: word, input_list[::2]))
+
+    # 121. Write a Python program to find nested list elements that are present in another list.
+    def find_nested_elements(self, input_list, nested_list):
+        return [[element for element in sublist if element in input_list] for sublist in nested_list]
+
+    # 122. Write a Python program to find common elements in a nested list.
+    def find_common_elements(self, nested_list):
+        common_elements = set(nested_list[0])
+        for sublist in nested_list[1:]:
+            common_elements.intersection_update(sublist)
+        return list(common_elements)
+
+
 list_solution = ListSolutions()
 
-print(list_solution.remove_duplicated_values([{'Green': '#008000'}, {'Black': '#000000'}, {'Blue': '#0000FF'}, {'Green': '#008000'}]))
+
+print(list_solution.find_common_elements([[12, 18, 23, 25, 45], [7, 12, 18, 24, 28], [1, 5, 8, 12, 15, 16, 18]]))
+# print(list_solution.find_nested_elements([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], [[12, 18, 23, 25, 45], [7, 11, 19, 24, 28], [1, 5, 8, 18, 15, 16]]))
+# print(list_solution.create_alternative_list(['red', 'black', 'white', 'green', 'orange']))
+# print(list_solution.is_substring(['red', 'black', 'white', 'green', 'orange'], 'ack'))
+# print(list_solution.difference_between_elements([2, 4, 6, 8]))
+# print(list_solution.difference_between_elements([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]))
+# print(list_solution.remove_elements_from_list([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], [2, 4, 6, 8]))
+# print(list_solution.sort_list_by_index([('Greyson Fulton', 98, 99), ('Brady Kent', 97, 96), ('Wyatt Knott', 91, 94), ('Beau Turnbull', 94, 98)], 0))
+# print(list_solution.sort_list_by_index([('Greyson Fulton', 98, 99), ('Brady Kent', 97, 96), ('Wyatt Knott', 91, 94), ('Beau Turnbull', 94, 98)], 1))
+# print(list_solution.sort_list_by_index([('Greyson Fulton', 98, 99), ('Brady Kent', 97, 96), ('Wyatt Knott', 91, 94), ('Beau Turnbull', 94, 98)], 2))
+# print(list_solution.is_element_unique([2, 4, 6, 8, 10, 12, 14]))
+# print(list_solution.is_element_unique([1, 2, 4, 6, 8, 2, 1, 4, 10, 12, 14, 12, 16, 17]))
+# print(list_solution.extract_nth_elements([('Greyson Fulton', 98, 99), ('Brady Kent', 97, 96), ('Wyatt Knott', 91, 94), ('Beau Turnbull', 94, 98)], 2))
+# print(list_solution.extract_nth_elements([('Greyson Fulton', 98, 99), ('Brady Kent', 97, 96), ('Wyatt Knott', 91, 94), ('Beau Turnbull', 94, 98)], 0))
+# print(list_solution.remove_duplicated_values([{'Green': '#008000'}, {'Black': '#000000'}, {'Blue': '#0000FF'}, {'Green': '#008000'}]))
 # print(list_solution.check_list_sorted([1, 2, 4, 6, 8, 10, 12, 14, 16, 17]))
 # print(list_solution.check_list_sorted([1, 4, 2, 6, 8, 10, 12, 14, 16, 17]))
 # print(list_solution.access_specific_element([2, 3, 8, 4, 7, 9, 8, 2, 6, 5, 1, 6, 1, 2, 3, 4, 6, 9, 1, 2], [0, 3, 5, 7, 10]))

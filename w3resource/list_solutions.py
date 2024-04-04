@@ -6,6 +6,7 @@ from random import shuffle, choice, sample
 from collections import Counter
 from operator import itemgetter
 from numpy import diff
+from string import punctuation
 
 
 class ListSolutions:
@@ -753,10 +754,26 @@ class ListSolutions:
         result_min = min([abs(x * y) for x, y in input_list])
         return result_max, result_min
 
+    # 125. Write a Python program to calculate the product of the unique numbers in a given list.
+    def multiply_unique_numbers(self, input_list):
+        result = 1
+        for number in set(input_list):
+            result *= number
+        return result
+
+    # 126. Write a Python program to interleave multiple lists of the same length.
+    def combine_multiple_list(self, *args):
+        return [value for sublist in zip(*args) for value in sublist]
+
+    # 127. Write a Python program to remove words from a given list of strings containing a character or string.
+    def remove_characters_list(self, input_list):
 
 list_solution = ListSolutions()
 
-print(list_solution.write_pairs_product([(2, 7), (2, 6), (1, 8), (4, 9)]))
+print(list_solution.remove_characters_list(['Red color', 'Orange#', 'Green', 'Orange @', 'White']))
+# print(list_solution.combine_multiple_list([1, 2, 3, 4, 5, 6, 7], [10, 20, 30, 40, 50, 60, 70], [100, 200, 300, 400, 500, 600, 700]))
+# print(list_solution.multiply_unique_numbers([10, 20, 30, 40, 20, 50, 60, 40]))
+# print(list_solution.write_pairs_product([(2, 7), (2, 6), (1, 8), (4, 9)]))
 # print(list_solution.reverse_string([(2, 7), (2, 6), (1, 8), (4, 9)]))
 # print(list_solution.reverse_string(['Red', 'Green', 'Blue', 'White', 'Black']))
 # print(list_solution.find_common_elements([[12, 18, 23, 25, 45], [7, 12, 18, 24, 28], [1, 5, 8, 12, 15, 16, 18]]))

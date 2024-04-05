@@ -7,6 +7,7 @@ from collections import Counter
 from operator import itemgetter
 from numpy import diff
 from string import punctuation
+from functools import reduce
 
 
 class ListSolutions:
@@ -766,11 +767,25 @@ class ListSolutions:
         return [value for sublist in zip(*args) for value in sublist]
 
     # 127. Write a Python program to remove words from a given list of strings containing a character or string.
-    def remove_characters_list(self, input_list):
+    def remove_characters_list(self, input_list, char_remove):
+        return [' '.join(word for word in sentence.split() if not any(char in word for char in char_remove)) for
+                sentence in input_list]
+
+    # 128. Write a Python program to calculate the sum of the numbers in a list between the indices of a specified range.
+    def sum_specific_range(self, input_list, start_index, end_index):
+        # result = 0
+        # for index in range(start_index, end_index + 1):
+        #     result += input_list[index]
+        # return result
+        # return sum(input_list[start_index: end_index + 1])
+        return reduce(lambda x, y: x + y, input_list[start_index: end_index + 1])
+
 
 list_solution = ListSolutions()
 
-print(list_solution.remove_characters_list(['Red color', 'Orange#', 'Green', 'Orange @', 'White']))
+
+print(list_solution.sum_specific_range([2, 1, 5, 6, 8, 3, 4, 9, 10, 11, 8, 12], 8, 10))
+# print(list_solution.remove_characters_list(['Red color', 'Orange#', 'Green', 'Orange @', 'White'], ['#', 'color', '@']))
 # print(list_solution.combine_multiple_list([1, 2, 3, 4, 5, 6, 7], [10, 20, 30, 40, 50, 60, 70], [100, 200, 300, 400, 500, 600, 700]))
 # print(list_solution.multiply_unique_numbers([10, 20, 30, 40, 20, 50, 60, 40]))
 # print(list_solution.write_pairs_product([(2, 7), (2, 6), (1, 8), (4, 9)]))

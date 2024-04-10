@@ -780,11 +780,51 @@ class ListSolutions:
         # return sum(input_list[start_index: end_index + 1])
         return reduce(lambda x, y: x + y, input_list[start_index: end_index + 1])
 
+    # 129. Write a Python program to reverse each list in a given list of lists.
+    def reverse_sublist(self, input_list):
+        return [number[::-1] for number in input_list]
+
+    # 130. Write a Python program to count the same pair in three given lists.
+    def count_pair_of_numbers(self, *args):
+        return sum([a == b == c for a, b, c in zip(*args)])
+
+    # 131. Write a Python program to count the frequency of consecutive duplicate elements in a given list of numbers.
+    def count_frequency_number(self, input_list):
+        elements = [key for key, group in groupby(input_list)]
+        frequency = [len(list(group)) for key, group in groupby(input_list)]
+        return elements, frequency
+
+    # 132. Write a Python program to find all index positions of the maximum and minimum values in a given list of numbers.
+    def find_max_index_number(self, input_list):
+        max_number = max(input_list)
+        min_number = min(input_list)
+        max_result = [index for index, number in enumerate(input_list) if number == max_number]
+        min_result = [index for index, number in enumerate(input_list) if number == min_number]
+        return max_result, min_result
+
+    # 133. Write a Python program to check if two lists have the same elements in them in same order or not.
+    def check_for_common_elements(self, *args):
+        common_elements = set(args[0]) & set(args[1])
+        first_list = [color for color in args[0] if color in common_elements]
+        second_list = [color for color in args[1] if color in common_elements]
+        return first_list == second_list
+
+    # 134. Write a Python program to find the difference between two lists including duplicate
+    def find_different_numbers(self, *args):
+        counter1 = Counter['a']
+
 
 list_solution = ListSolutions()
 
-
-print(list_solution.sum_specific_range([2, 1, 5, 6, 8, 3, 4, 9, 10, 11, 8, 12], 8, 10))
+print(list_solution.find_different_numbers([1, 1, 2, 3, 3, 4, 4, 5, 6, 7], [1, 1, 2, 4, 5, 6]))
+# print(list_solution.check_for_common_elements(['red', 'green', 'black', 'orange'], ['red', 'pink', 'green', 'white', 'black']))
+# print(list_solution.check_for_common_elements(['red', 'pink', 'green', 'white', 'black'], ['white', 'orange', 'pink', 'black']))
+# print(list_solution.check_for_common_elements(['red', 'green', 'black', 'orange'], ['white', 'orange', 'pink', 'black']))
+# print(list_solution.find_max_index_number([12, 33, 23, 10, 67, 89, 45, 667, 23, 12, 11, 10, 54]))
+# print(list_solution.count_frequency_number([1, 2, 2, 2, 4, 4, 4, 5, 5, 5, 5]))
+# print(list_solution.count_pair_of_numbers([1, 2, 3, 4, 5, 6, 7, 8], [2, 2, 3, 1, 2, 6, 7, 9], [2, 1, 3, 1, 2, 6, 7, 9]))
+# print(list_solution.reverse_sublist([[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12], [13, 14, 15, 16]]))
+# print(list_solution.sum_specific_range([2, 1, 5, 6, 8, 3, 4, 9, 10, 11, 8, 12], 8, 10))
 # print(list_solution.remove_characters_list(['Red color', 'Orange#', 'Green', 'Orange @', 'White'], ['#', 'color', '@']))
 # print(list_solution.combine_multiple_list([1, 2, 3, 4, 5, 6, 7], [10, 20, 30, 40, 50, 60, 70], [100, 200, 300, 400, 500, 600, 700]))
 # print(list_solution.multiply_unique_numbers([10, 20, 30, 40, 20, 50, 60, 40]))

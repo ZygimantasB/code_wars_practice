@@ -811,12 +811,23 @@ class ListSolutions:
 
     # 134. Write a Python program to find the difference between two lists including duplicate
     def find_different_numbers(self, *args):
-        counter1 = Counter['a']
+        counter1 = Counter(args[0])
+        counter2 = Counter(args[1])
 
+        result = []
+        for number in counter1:
+            if counter1[number] > counter2[number]:
+                result.extend([number] * (counter1[number] - counter2[number]))
+
+
+    # 135. Write a Python program to iterate over all pairs of consecutive items in a given list.
+    def iterate_over_pairs(self, input_list):
+            return list(zip(input_list, input_list[1:]))
 
 list_solution = ListSolutions()
 
-print(list_solution.find_different_numbers([1, 1, 2, 3, 3, 4, 4, 5, 6, 7], [1, 1, 2, 4, 5, 6]))
+print(list_solution.iterate_over_pairs([1, 1, 2, 3, 3, 4, 4, 5]))
+# print(list_solution.find_different_numbers([1, 1, 2, 3, 3, 4, 4, 5, 6, 7], [1, 1, 2, 4, 5, 6]))
 # print(list_solution.check_for_common_elements(['red', 'green', 'black', 'orange'], ['red', 'pink', 'green', 'white', 'black']))
 # print(list_solution.check_for_common_elements(['red', 'pink', 'green', 'white', 'black'], ['white', 'orange', 'pink', 'black']))
 # print(list_solution.check_for_common_elements(['red', 'green', 'black', 'orange'], ['white', 'orange', 'pink', 'black']))

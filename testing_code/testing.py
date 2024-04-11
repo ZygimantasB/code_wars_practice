@@ -1,3 +1,6 @@
+from collections import Counter
+
+
 def contains_list(number_list1, number_list2):
     # return list(map(number_list1.__contains__, number_list2))
     # return [number_list1.__contains__(x) for x in number_list2]
@@ -25,4 +28,11 @@ def max_min_function(input_list):
 
     return max_val, min_val
 
-print(max_min_function([5, 7, 2, 8, 6]))
+# print(max_min_function([5, 7, 2, 8, 6]))
+
+
+# def from_collections_import_counter(input_list):
+#     counter = Counter(input_list)
+#     return counter
+#
+# print(from_collections_import_counter(['apple', 'banana', 'apple', 'orange', 'banana', 'banana']))

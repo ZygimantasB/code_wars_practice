@@ -824,9 +824,43 @@ class ListSolutions:
     def iterate_over_pairs(self, input_list):
             return list(zip(input_list, input_list[1:]))
 
+    def remove_duplicated_words(self, input_list):
+        # return set(input_list)
+        # result = []
+        # for word in input_list:
+        #     if word not in result:
+        #         result.append(word)
+        #     else:
+        #         continue
+        # return result
+        # [result.append(word) for word in input_list if word not in result]
+        # return result
+        return list(dict.fromkeys(input_list))
+
+    # 137. Write a Python program to find the first even and odd number in a given list of numbers.
+    def first_even_odd_number(self, input_list):
+        first_even = next(number for number in input_list if number % 2 == 0)
+        first_odd = next(number for number in input_list if number % 2 != 0)
+        return first_even, first_odd
+
+    # 138. Write a Python program to sort a given mixed list of integers and strings. Numbers must be sorted before strings.
+    def sort_by_type(self, input_list):
+        sort_number = sorted([number for number in input_list if isinstance(number, int)])
+        sort_string = sorted([string for string in input_list if isinstance(string, str)])
+        return sort_number + sort_string
+
+    # 139. Write a Python program to sort a given list of strings(numbers) numerically.
+    def sort_given_int(self, input_list):
+        return sorted([int(number) for number in input_list])
+
+
 list_solution = ListSolutions()
 
-print(list_solution.iterate_over_pairs([1, 1, 2, 3, 3, 4, 4, 5]))
+print(list_solution.sort_given_int(['4', '12', '45', '7', '0', '100', '200', '-12', '-500']))
+# print(list_solution.sort_by_type([19, 'red', 12, 'green', 'blue', 10, 'white', 'green', 1]))
+# print(list_solution.first_even_odd_number([1, 3, 5, 7, 4, 1, 6, 8]))
+# print(list_solution.remove_duplicated_words(['Python', 'Exercises', 'Practice', 'Solution', 'Exercises']))
+# print(list_solution.iterate_over_pairs([1, 1, 2, 3, 3, 4, 4, 5]))
 # print(list_solution.find_different_numbers([1, 1, 2, 3, 3, 4, 4, 5, 6, 7], [1, 1, 2, 4, 5, 6]))
 # print(list_solution.check_for_common_elements(['red', 'green', 'black', 'orange'], ['red', 'pink', 'green', 'white', 'black']))
 # print(list_solution.check_for_common_elements(['red', 'pink', 'green', 'white', 'black'], ['white', 'orange', 'pink', 'black']))

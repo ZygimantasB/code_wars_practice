@@ -2,7 +2,7 @@
 import ast
 import itertools
 from itertools import groupby, combinations
-from random import shuffle, choice, sample
+from random import shuffle, choice, sample, randint
 from collections import Counter
 from operator import itemgetter
 from numpy import diff
@@ -32,12 +32,13 @@ class ListSolutions:
         self.color2 = "Black", "Green", "White", "Pink"
         self.first_5_numbers = [0, 1, 2, 3, 4, 5]
         self.word_list_1 = ['be', 'have', 'do', 'say', 'get', 'make', 'go', 'know', 'take', 'see', 'come', 'think',
-                     'look', 'want', 'give', 'use', 'find', 'tell', 'ask', 'work', 'seem', 'feel', 'leave', 'call']
+                            'look', 'want', 'give', 'use', 'find', 'tell', 'ask', 'work', 'seem', 'feel', 'leave',
+                            'call']
         self.chars_list1 = ['a', 'b', 'c', 'd', 'e', 'f']
         self.chars_list2 = ['d', 'e', 'f', 'g', 'h']
         self.one_to_fifteen = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
         self.pair_of_values = [(1, 2), (3, 4), (1, 2), (5, 6), (7, 8), (1, 2), (3, 4), (3, 4), (7, 8), (9, 10)]
-        self.nested_colors =  [['Red'], ['Green'], ['Black']]
+        self.nested_colors = [['Red'], ['Green'], ['Black']]
         self.two_lists = ["Black", "Red", "Maroon", "Yellow"], ["#000000", "#FF0000", "#800000", "#FFFF00"]
         self.sort_list_sec_value = [{'key': {'subkey': 1}}, {'key': {'subkey': 10}}, {'key': {'subkey': 5}}]
         self.char_list_values = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n']
@@ -51,7 +52,6 @@ class ListSolutions:
         self.words_random_characters = ['abcd', 'abc', 'bcd', 'bkie', 'cder', 'cdsw', 'sdfsd', 'dagfa', 'acjd']
         self.list_with_sublist = [0, 10, [20, 30], 40, 50, [60, 70, 80], [90, 100, 110, 120]]
         self.numbers_list2 = [0, 0, 1, 2, 3, 4, 4, 5, 6, 6, 6, 7, 8, 9, 4, 4]
-
 
     # 1. Write a Python program to sum all the items in a list.
     def sum_list(self):
@@ -84,6 +84,7 @@ class ListSolutions:
             if len(value) >= 2 and value[0] == value[-1]:
                 count += 1
         return count
+
     # 6. Write a Python program to get a list, sorted in increasing
     # order by the last element in each tuple from a given list of non-empty tuples.
     # Sample List : [(2, 5), (1, 2), (4, 4), (2, 3), (2, 1)]
@@ -155,6 +156,7 @@ class ListSolutions:
         first_list = [number for number in self.numbers_list if number not in self.numbers_list1]
         second_list = [number for number in self.numbers_list1 if number not in self.numbers_list]
         return first_list + second_list
+
     # 20. Write a Python program to access the index of a list.
 
     def find_list_index(self):
@@ -165,7 +167,8 @@ class ListSolutions:
 
     def flatten_the_list(self):
         return [element for sublist in self.shallow_list for element in sublist]
-#     24. Write a Python program to append a list to the second list.
+
+    #     24. Write a Python program to append a list to the second list.
 
     def append_to_second_list(self):
         # for number in self.numbers_list:
@@ -185,13 +188,17 @@ class ListSolutions:
     # 27. Write a Python program to find the second smallest number in a list.
     def find_second_smallest(self):
         unique_numbers = list(set(self.numbers_list))
-        if len(unique_numbers) < 2: return None
-        else: return sorted(unique_numbers)[1]
+        if len(unique_numbers) < 2:
+            return None
+        else:
+            return sorted(unique_numbers)[1]
 
     def find_second_largest_number(self):
         unique_numbers = list(set(self.numbers_list))
-        if len(unique_numbers) < 2: return None
-        else: return sorted(unique_numbers)[-2]
+        if len(unique_numbers) < 2:
+            return None
+        else:
+            return sorted(unique_numbers)[-2]
 
     # 29. Write a Python program to get unique values from a list.
     def get_unique_values(self):
@@ -214,6 +221,7 @@ class ListSolutions:
             else:
                 count_dict[value] = 1
         return count_dict
+
     # 31. Write a Python program to count the number of elements in a list within a specified range.
 
     def count_values_in_range(self, range_start, range_end):
@@ -237,6 +245,7 @@ class ListSolutions:
         return any(
             (self.numbers_list == self.duplicated_list[i:sublist_length + i]) for i in range(len(self.duplicated_list) -
                                                                                              sublist_length + 1))
+
     # 33. Write a Python program to generate all sublists of a list.
     def generate_all_sublist(self):
         # return [self.sublist1[i: j] for i in range(len(self.sublist1)) for j in range(i + 1, len(self.sublist1) + 1)]
@@ -257,8 +266,9 @@ class ListSolutions:
 
     def change_value_position(self):
         for i in range(0, len(self.first_5_numbers), 2):
-            if i+1 < len(self.first_5_numbers):
-                self.first_5_numbers[i], self.first_5_numbers[i+1] = self.first_5_numbers[i+1], self.first_5_numbers[i]
+            if i + 1 < len(self.first_5_numbers):
+                self.first_5_numbers[i], self.first_5_numbers[i + 1] = self.first_5_numbers[i + 1], \
+                    self.first_5_numbers[i]
         return self.first_5_numbers
 
     def combine_integers_to_one(self):
@@ -285,7 +295,7 @@ class ListSolutions:
         return first_missing_chars, second_missing_chars
 
     def generate_three_lists(self):
-        return [[5*i + j for j in range(1, 6)] for i in range(5)]
+        return [[5 * i + j for j in range(1, 6)] for i in range(5)]
 
     # 45. Write a Python program to convert a pair of values into a sorted unique array.
     def convert_pair_values_to_list(self):
@@ -325,7 +335,8 @@ class ListSolutions:
     def compute_color_list(self):
         # first_sec_list = [color for color in self.two_color_lists[0] if color not in self.two_color_lists[1]]
         first_sec_list = list(filter(lambda color: color not in self.two_lists[1], self.two_color_lists[0]))
-        sec_first_list = [color for color in self.two_color_lists[1] if self.two_color_lists not in self.two_color_lists[0]]
+        sec_first_list = [color for color in self.two_color_lists[1] if
+                          self.two_color_lists not in self.two_color_lists[0]]
         return first_sec_list, sec_first_list
 
     # 53. Write a Python program to create a list with infinite elements.
@@ -339,7 +350,7 @@ class ListSolutions:
     # 54. Write a Python program to concatenate elements of a list.
     def concat_elements_in_list(self):
         # return ''.join([color.lower() for color in self.color_list])
-        return ''.join(map(lambda color:color.lower(), self.color_list))
+        return ''.join(map(lambda color: color.lower(), self.color_list))
 
     # 55. Write a Python program to remove key-value pairs from a list of dictionaries.
     def remove_key_value_pairs(self):
@@ -367,7 +378,7 @@ class ListSolutions:
 
     # 60. Write a Python program to find a tuple, the smallest second index value from a list of tuples.
     def find_second_smallest_value(self):
-        return sorted(self.pair_of_values, key=lambda value:value[1])[0]
+        return sorted(self.pair_of_values, key=lambda value: value[1])[0]
 
     # 61. Write a Python program to create a list of empty dictionaries.
     def create_list_empty_dict(self, dict_range):
@@ -384,7 +395,7 @@ class ListSolutions:
 
     # 64. Write a Python program to iterate over two lists simultaneously.
     def iterate_over_two_lists(self):
-        return '\n'.join([str([char, numbers]) for char, numbers in zip(self.one_to_three, self.sublist2 )])
+        return '\n'.join([str([char, numbers]) for char, numbers in zip(self.one_to_three, self.sublist2)])
 
     def add_zeroes_end(self):
         # self.random_number_list.sort()
@@ -462,7 +473,6 @@ class ListSolutions:
                 decoded_list.append(item)
         return decoded_list
 
-
     # 78. Write a Python program to split a given list into two parts where the length of the first part of the list is given.
     def split_list_two_parts(self, input_list, list_len):
         return [input_list[:list_len], input_list[list_len:]]
@@ -472,6 +482,7 @@ class ListSolutions:
         # input_list.remove(element)
         # return input_list
         return input_list[:element - 1] + input_list[element:]
+
     # 80. Write a Python program to insert an element at a specified position into a given list.
     def insert_element_nth_position(self, number_list, element, position):
         if position > len(number_list):
@@ -490,7 +501,7 @@ class ListSolutions:
             yield current_combination
         else:
             for i in range(len(input_list)):
-                yield from self.generate_combinations(input_list[i+1:], n-1, current_combination + [input_list[i]])
+                yield from self.generate_combinations(input_list[i + 1:], n - 1, current_combination + [input_list[i]])
 
     # 83. Write a Python program to round every number in a given list of numbers and print the total sum multiplied by the length of the list.
     def round_numbers_sum_multi(self, numbers_list):
@@ -537,6 +548,7 @@ class ListSolutions:
         # Calculate and print the sum of the primary diagonal
         diagonal_sum = sum(matrix[i][i] for i in range(size))
         return "Sum of matrix primary diagonal: " + str(diagonal_sum)
+
     # 89. Write a Python program to Zip two given lists of lists.
     def zip_two_given_lists(self, number_list1, number_list2):
         # return[(a + b) for a, b in zip(number_list1, number_list2)]
@@ -579,6 +591,7 @@ class ListSolutions:
         for a, b in result.items():
             result[a] = sum(b)
         return result
+
     # 95. Write a Python program to sort each sublist of strings in a given list of lists.
     def sort_sublist(self, my_list):
         # return sorted(my_list, key=lambda number: number[0])
@@ -621,6 +634,7 @@ class ListSolutions:
     def sort_matrix(self, matrix):
         sorted_matrix = sorted(matrix, key=sum)
         return sorted_matrix
+
     # 102. Write a Python program to extract specified size of strings from a give list of string values.
     def extract_word_by_len(self, input_list, word_len):
         result = []
@@ -663,7 +677,7 @@ class ListSolutions:
 
     # 109. Write a Python program to rotate a given list by a specified number of items in the right or left direction.
     def rotate_numbers_list(self, input_list, rotate_number):
-        return input_list[rotate_number:] + input_list[:rotate_number +1]
+        return input_list[rotate_number:] + input_list[:rotate_number + 1]
 
     # 110. Write a Python program to find the item with the most occurrences in a given list.
     def find_max_occurrences_number(self, input_list):
@@ -819,10 +833,9 @@ class ListSolutions:
             if counter1[number] > counter2[number]:
                 result.extend([number] * (counter1[number] - counter2[number]))
 
-
     # 135. Write a Python program to iterate over all pairs of consecutive items in a given list.
     def iterate_over_pairs(self, input_list):
-            return list(zip(input_list, input_list[1:]))
+        return list(zip(input_list, input_list[1:]))
 
     def remove_duplicated_words(self, input_list):
         # return set(input_list)
@@ -853,10 +866,60 @@ class ListSolutions:
     def sort_given_int(self, input_list):
         return sorted([int(number) for number in input_list])
 
+    # 140. Write a Python program to remove a specific item from a given list of lists.
+    def remove_item_list(self, *args, index):
+        remove_list = [number for sublist in args for number in sublist if number != sublist[index]]
+        return remove_list
+
+    # 141. Write a Python program to remove empty lists from a given list of lists.
+    def remove_empty_list(self, input_list):
+        return [value for value in input_list if value]
+
+    # 142. Write a Python program to sum a specific column of a list in a given list of lists.
+    def remove_specific_column_list(self, input_list, index):
+        # result = [sum(number) for number in input_list if number == input_list[index]]
+        result = sum(row[index] for row in input_list)
+        return result
+
+    # 144. Write a Python program to extract every first or specified element from a given two-dimensional list.
+    def extract_first_element(self, input_list, index):
+        return [number[index] for number in input_list]
+
+    # 145. Write a Python program to generate a number in a specified range except for some specific numbers.
+    def generate_number_except(self, exclude, start, end):
+        numbers = [number for number in range(start, end + 1) if number not in exclude]
+        return choice(numbers)
+
+    # 146. Write a Python program to compute the sum of digits of each number in a given list.
+    def compute_each_number(self, input_list):
+        # result = 0
+        # for numbers in input_list:
+        #     if isinstance(numbers, int):
+        #         str_numbers = str(abs(numbers))
+        #         for str_number in str_numbers:
+        #             result += int(str_number)
+        # return result
+        return sum(int(el) for n in input_list for el in str(n) if el.isdigit())
 
 list_solution = ListSolutions()
 
-print(list_solution.sort_given_int(['4', '12', '45', '7', '0', '100', '200', '-12', '-500']))
+
+print(list_solution.compute_each_number([10, 20, 4, 5, 'b', 70, 'a']))
+# print(list_solution.compute_each_number([10, 2, 56]))
+# print(list_solution.generate_number_except([-5,0,4,3,2], -5, 5))
+# print(list_solution.generate_number_except([2, 9, 10], 1, 10))
+# print(list_solution.extract_first_element([[1, 2, 3, 2], [4, 5, 6, 2], [7, 1, 9, 5]], 2))
+# print(list_solution.extract_first_element([[1, 2, 3, 2], [4, 5, 6, 2], [7, 1, 9, 5]], 0))
+# print(list_solution.remove_specific_column_list([[1, 2, 3, 2], [4, 5, 6, 2], [7, 8, 9, 5]], 0))
+# print(list_solution.remove_empty_list([[], [], [], 'Red', 'Green', [1, 2], 'Blue', [], []]))
+# print(list_solution.remove_item_list([['Red', 'Maroon', 'Yellow', 'Olive'], ['#FF0000', '#800000', '#FFFF00',
+#                                                                              '#808000'], ['rgb(255,0,0)', 'rgb(128,0,'
+#                                                                                                           '0)',
+#                                                                                           'rgb(255,255,0)', 'rgb(128,'
+#                                                                                                             '128,'
+#                                                                                                             '0)']],
+#                                      index=0))
+# print(list_solution.sort_given_int(['4', '12', '45', '7', '0', '100', '200', '-12', '-500']))
 # print(list_solution.sort_by_type([19, 'red', 12, 'green', 'blue', 10, 'white', 'green', 1]))
 # print(list_solution.first_even_odd_number([1, 3, 5, 7, 4, 1, 6, 8]))
 # print(list_solution.remove_duplicated_words(['Python', 'Exercises', 'Practice', 'Solution', 'Exercises']))

@@ -901,10 +901,44 @@ class ListSolutions:
         # return result
         return sum(int(el) for n in input_list for el in str(n) if el.isdigit())
 
+    # 147. Write a Python program to combine two lists into another list randomly.
+    def combine_lists_randomly(self, *args):
+        combine_lists = args[0] + args[1]
+        shuffle(combine_lists)
+        return combine_lists
+
+    # 148. Write a Python program to remove specific words from a given list.
+    def remove_specific_word(self, input_list, exclude):
+        return [color for color in input_list if color not in exclude]
+
+    # 149. Write a Python program to get all possible combinations of the elements of a given list.
+    def get_all_possible_combination(self, input_list, number):
+        result = []
+        for color in range(1, number + 1):
+            result.extend(combinations(input_list, color))
+        return [list(comb) for comb in result]
+
+    # 150. Write a Python program to reverse a given list of lists.
+    def reverse_given_list(self, input_list):
+        # return list(reversed(input_list))
+        return input_list[::-1]
+
+    # 151. Write a Python program to find the maximum and minimum values in a given list within a specified index range.
+    def find_max_min_values_range(self, input_list, start, end):
+        specific_range = input_list[start: end]
+        min_value = min(specific_range)
+        max_value = max(specific_range)
+        return max_value, min_value
+
+
 list_solution = ListSolutions()
 
-
-print(list_solution.compute_each_number([10, 20, 4, 5, 'b', 70, 'a']))
+print(list_solution.find_max_min_values_range([4, 3, 0, 5, 3, 0, 2, 3, 4, 2, 4, 3, 5], 3, 8))
+# print(list_solution.reverse_given_list([['orange', 'red'], ['green', 'blue'], ['white', 'black', 'pink']]))
+# print(list_solution.get_all_possible_combination(['orange', 'red', 'green', 'blue'], 3))
+# print(list_solution.remove_specific_word(['red', 'green', 'blue', 'white', 'black', 'orange'], ['white', 'orange']))
+# print(list_solution.combine_lists_randomly([1, 2, 7, 8, 3, 7], [4, 3, 8, 9, 4, 3, 8, 9]))
+# print(list_solution.compute_each_number([10, 20, 4, 5, 'b', 70, 'a']))
 # print(list_solution.compute_each_number([10, 2, 56]))
 # print(list_solution.generate_number_except([-5,0,4,3,2], -5, 5))
 # print(list_solution.generate_number_except([2, 9, 10], 1, 10))

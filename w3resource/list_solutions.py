@@ -8,6 +8,7 @@ from operator import itemgetter
 from numpy import diff
 from string import punctuation
 from functools import reduce
+from heapq import merge
 
 
 class ListSolutions:
@@ -930,10 +931,25 @@ class ListSolutions:
         max_value = max(specific_range)
         return max_value, min_value
 
+    # 152. Write a Python program to combine two sorted lists using the heapq module.
+    def use_heapq(self, *args):
+        return list(merge(args[0], args[1]))
+
+    # 153. Write a Python program to check if a given element occurs at least n times in a list.
+    def check_if_element_occurs(self, input_list, occurs, check_number):
+        counting = {number: input_list.count(number) for number in input_list}
+        return counting[check_number] == occurs, counting
+
+
+
 
 list_solution = ListSolutions()
 
-print(list_solution.find_max_min_values_range([4, 3, 0, 5, 3, 0, 2, 3, 4, 2, 4, 3, 5], 3, 8))
+print(list_solution.check_if_element_occurs([0, 1, 3, 5, 0, 3, 4, 5, 0, 8, 0, 3, 6, 0, 3, 1, 1, 0], 3, 8))
+print(list_solution.check_if_element_occurs([0, 1, 3, 5, 0, 3, 4, 5, 0, 8, 0, 3, 6, 0, 3, 1, 1, 0], 6, 0))
+print(list_solution.check_if_element_occurs([0, 1, 3, 5, 0, 3, 4, 5, 0, 8, 0, 3, 6, 0, 3, 1, 1, 0], 4, 3))
+# print(list_solution.use_heapq([1, 3, 5, 7, 9, 11], [0, 2, 4, 6, 8, 10]))
+# print(list_solution.find_max_min_values_range([4, 3, 0, 5, 3, 0, 2, 3, 4, 2, 4, 3, 5], 3, 8))
 # print(list_solution.reverse_given_list([['orange', 'red'], ['green', 'blue'], ['white', 'black', 'pink']]))
 # print(list_solution.get_all_possible_combination(['orange', 'red', 'green', 'blue'], 3))
 # print(list_solution.remove_specific_word(['red', 'green', 'blue', 'white', 'black', 'orange'], ['white', 'orange']))

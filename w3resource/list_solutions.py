@@ -1,7 +1,7 @@
 # 1. Write a Python program to sum all the items in a list.
 import ast
 import itertools
-from itertools import groupby, combinations
+from itertools import groupby, combinations, zip_longest
 from random import shuffle, choice, sample, randint
 from collections import Counter
 from operator import itemgetter
@@ -945,16 +945,30 @@ class ListSolutions:
         return [number[0] + number[1] for number in zip(args[0], args[1])]
 
     # 155. Write a Python program to add two given lists of different lengths, starting on the left.
-    def combine_two_lists(self, *args):
-        f_len = len(args[0] - (len(args[1] -1)
-        for number in range(0, len(args[1]), args[0]):
-            if f_len - number >= len(args[0])
+    def add_list_from_web(self, list1, list2):
+        return [number1 + number2 for number1, number2 in zip_longest(list1, list2, fillvalue=0)]
 
+    # 156. Write a Python program to add two given lists of different lengths, starting on the right.
+    def add_lists_from_right(self, list1, list2):
+        list1.reverse()
+        list2.reverse()
+        return [number1 + number2 for number1, number2 in zip_longest(list1, list2, fillvalue=0)]
 
+    # 157. Write a Python program to interleave lists of varying lengths.
+    def interleave_lists(self, *input_list):
+        result = []
+        for tuple_element in zip_longest(*input_list, fillvalue=0):
+            for element in tuple_element:
+                if element is not None:
+                    result.append(element)
+        return result
 
 list_solution = ListSolutions()
 
 
+print(list_solution.interleave_lists([2, 4, 7, 0, 5, 8], [2, 5, 8], [0, 1], [3, 3, -1, 7]))
+# print(list_solution.add_lists_from_right([2, 4, 7, 0, 5, 8], [3, 3, -1, 7]))
+# print(list_solution.add_list_from_web([2, 4, 7, 0, 5, 8], [3, 3, -1, 7]))
 # print(list_solution.combine_same_len_list([['a', 'b'], ['b', 'c', 'd'], ['e', 'f']],  [['p', 'q'], ['p', 's', 't'], ['u', 'v', 'w']]))
 # print(list_solution.combine_same_len_list([[10, 20], [30, 40], [50, 60], [30, 20, 80]], [[61], [12, 14, 15], [12, 13, 19, 20], [12]]))
 # print(list_solution.check_if_element_occurs([0, 1, 3, 5, 0, 3, 4, 5, 0, 8, 0, 3, 6, 0, 3, 1, 1, 0], 3, 8))

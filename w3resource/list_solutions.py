@@ -940,14 +940,26 @@ class ListSolutions:
         counting = {number: input_list.count(number) for number in input_list}
         return counting[check_number] == occurs, counting
 
+    # 154. Write a Python program to join two given list of lists of the same length, element wise.
+    def combine_same_len_list(self, *args):
+        return [number[0] + number[1] for number in zip(args[0], args[1])]
+
+    # 155. Write a Python program to add two given lists of different lengths, starting on the left.
+    def combine_two_lists(self, *args):
+        f_len = len(args[0] - (len(args[1] -1)
+        for number in range(0, len(args[1]), args[0]):
+            if f_len - number >= len(args[0])
 
 
 
 list_solution = ListSolutions()
 
-print(list_solution.check_if_element_occurs([0, 1, 3, 5, 0, 3, 4, 5, 0, 8, 0, 3, 6, 0, 3, 1, 1, 0], 3, 8))
-print(list_solution.check_if_element_occurs([0, 1, 3, 5, 0, 3, 4, 5, 0, 8, 0, 3, 6, 0, 3, 1, 1, 0], 6, 0))
-print(list_solution.check_if_element_occurs([0, 1, 3, 5, 0, 3, 4, 5, 0, 8, 0, 3, 6, 0, 3, 1, 1, 0], 4, 3))
+
+# print(list_solution.combine_same_len_list([['a', 'b'], ['b', 'c', 'd'], ['e', 'f']],  [['p', 'q'], ['p', 's', 't'], ['u', 'v', 'w']]))
+# print(list_solution.combine_same_len_list([[10, 20], [30, 40], [50, 60], [30, 20, 80]], [[61], [12, 14, 15], [12, 13, 19, 20], [12]]))
+# print(list_solution.check_if_element_occurs([0, 1, 3, 5, 0, 3, 4, 5, 0, 8, 0, 3, 6, 0, 3, 1, 1, 0], 3, 8))
+# print(list_solution.check_if_element_occurs([0, 1, 3, 5, 0, 3, 4, 5, 0, 8, 0, 3, 6, 0, 3, 1, 1, 0], 6, 0))
+# print(list_solution.check_if_element_occurs([0, 1, 3, 5, 0, 3, 4, 5, 0, 8, 0, 3, 6, 0, 3, 1, 1, 0], 4, 3))
 # print(list_solution.use_heapq([1, 3, 5, 7, 9, 11], [0, 2, 4, 6, 8, 10]))
 # print(list_solution.find_max_min_values_range([4, 3, 0, 5, 3, 0, 2, 3, 4, 2, 4, 3, 5], 3, 8))
 # print(list_solution.reverse_given_list([['orange', 'red'], ['green', 'blue'], ['white', 'black', 'pink']]))

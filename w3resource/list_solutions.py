@@ -963,10 +963,34 @@ class ListSolutions:
                     result.append(element)
         return result
 
+    # 158. Write a Python program to find the maximum and minimum values in a given list of tuples.
+    def get_max_min_values(self, input_list):
+        # min_value = min(input_list, key=lambda number: number[1])[1]
+        # max_value = max(input_list, key=lambda number: number[1])[1]
+        min_value = min(input_list, key=itemgetter(1))[1]
+        max_value = max(input_list, key=itemgetter(1))[1]
+        return min_value, max_value
+
+        # 159. Write a Python program to append the same value/a list multiple times to a list/list-of-lists.
+    def append_value_to_list(self, input_list, value, times):
+        if isinstance(value, list):
+            for _ in range(times):
+                input_list.extend(value)
+        else:
+            for _ in range(times):
+                input_list.append(value)
+        return input_list
+
+
 list_solution = ListSolutions()
 
 
-print(list_solution.interleave_lists([2, 4, 7, 0, 5, 8], [2, 5, 8], [0, 1], [3, 3, -1, 7]))
+print(list_solution.append_value_to_list([], 7, 5))
+print(list_solution.append_value_to_list([[5, 6, 7]], [[1, 2, 5]], 3))
+print(list_solution.append_value_to_list([], [[1, 2, 5]], 4))
+print(list_solution.append_value_to_list([1, 2, 3, 4], 5, 6))
+# print(list_solution.get_max_min_values([('V', 60), ('VI', 70), ('VII', 75), ('VIII', 72), ('IX', 78), ('X', 70)]))
+# print(list_solution.interleave_lists([2, 4, 7, 0, 5, 8], [2, 5, 8], [0, 1], [3, 3, -1, 7]))
 # print(list_solution.add_lists_from_right([2, 4, 7, 0, 5, 8], [3, 3, -1, 7]))
 # print(list_solution.add_list_from_web([2, 4, 7, 0, 5, 8], [3, 3, -1, 7]))
 # print(list_solution.combine_same_len_list([['a', 'b'], ['b', 'c', 'd'], ['e', 'f']],  [['p', 'q'], ['p', 's', 't'], ['u', 'v', 'w']]))

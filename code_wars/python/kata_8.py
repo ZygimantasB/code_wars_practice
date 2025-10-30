@@ -224,6 +224,20 @@ def pillars(num_pill, dist, width):
         total_distance -= width * (num_pill - 2)
         return total_distance
 
-print(pillars(3, 20, 25))
-print(pillars(1, 10, 10))
 
+def sakura_fall(v: int) -> int:
+    if v <= 0:
+        return 0
+
+    height = 5 * 80
+
+    return height / v
+
+
+def multi_table(number):
+    result = []
+    for i in range(1, 11):
+        result.append(f'{i} * {number} = {i * number}')
+    return '\n'.join(result)
+
+print(multi_table(5))

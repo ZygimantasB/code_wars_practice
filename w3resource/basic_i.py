@@ -5,7 +5,7 @@ import calendar
 from math import pi
 from typing import List
 from sys import version
-from datetime import datetime
+from datetime import datetime, date
 
 
 class PythonBasicPart1:
@@ -71,8 +71,34 @@ class PythonBasicPart1:
                 year = int(input('Write your year: '))
         return calendar.month(year, month)
 
+    def task_13(self) -> str:
+        heredoc = """a string that you "don't" have to escape
+This
+is a ....... multi-line
+heredoc string --------> example"""
+        return heredoc
+
+    def task_14(self, first_date: tuple, second_date: tuple) -> str:
+        date1 = date(*first_date)
+        date2 = date(*second_date)
+        delta = date2 - date1
+        return f"{delta.days} days ago"
+
+    def task_15(self, r: float = 6) -> float:
+        return (4/3) * pi * r**3
+
+    def task_16(self, number) -> float:
+        # if number > 17:
+        #     return (number - 17) * 2
+        # else:
+        #     return 17 - number
+        diff = number - 17
+        return diff * 2 if diff > 0 else (abs(diff))
+
+    def task_17(self, number: int) -> bool:
+        return abs(number - 1000) <= 100 or abs(number - 2000) <= 100
 
 
 
 basic = PythonBasicPart1()
-print(basic.task_12(12, 12))
+print(basic.task_17(1800))

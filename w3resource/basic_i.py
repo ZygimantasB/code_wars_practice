@@ -99,6 +99,5 @@ heredoc string --------> example"""
         return abs(number - 1000) <= 100 or abs(number - 2000) <= 100
 
 
-
 basic = PythonBasicPart1()
 print(basic.task_17(1800))
